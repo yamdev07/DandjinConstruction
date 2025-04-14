@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Vitrine - Dandjin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <section id="services" class="services-section">
+        <div class="container">
+          <h2 class="services-titles">Nos Services</h2>
+          <div class="services-grid">
+      
+            <div class="service-card">
+              <i class="fas fa-water icon"></i>
+              <h3>Dragage de sable</h3>
+              <p>Extraction responsable de sable lagunaire de haute qualité pour l'aménagement et la construction.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-cubes icon"></i>
+              <h3>Vente de sable</h3>
+              <p>Distribution de sable fin purifié destiné à divers projets de construction et d'infrastructure.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-hard-hat icon"></i>
+              <h3>Construction</h3>
+              <p>Réalisation d'ouvrages solides : routes, quais, berges et infrastructures urbaines durables.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-city icon"></i>
+              <h3>Aménagement urbain</h3>
+              <p>Création de cités modernes sur zones remblayées avec logements, commerces et loisirs.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-ship icon"></i>
+              <h3>Transport maritime</h3>
+              <p>Développement de voies navigables pour le transport sécurisé de personnes et marchandises.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-leaf icon"></i>
+              <h3>Développement durable</h3>
+              <p>Protection de l’environnement, lutte contre l’érosion, gestion des ressources naturelles.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-users icon"></i>
+              <h3>Impact communautaire</h3>
+              <p>Création d’emplois, formation locale et partenariats avec ONG, startups et universités.</p>
+            </div>
+      
+            <div class="service-card">
+              <i class="fas fa-map-marked-alt icon"></i>
+              <h3>Vente de terrains</h3>
+              <p>Commercialisation de parcelles stratégiques dans une cité urbaine en développement.</p>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+
+
+
+
+    <div id="footer-container"></div>
+
+    <script>
+        // Chargement du header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erreur lors du chargement du header:', error));
+    
+        // Chargement du footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erreur lors du chargement du footer:', error));
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

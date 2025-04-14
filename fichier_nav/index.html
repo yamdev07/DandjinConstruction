@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Vitrine - Dandjin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+    <!-- Chargement dynamique du header -->
+    <div id="header-container"></div>
+    
+    <!-- Bannière principale -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 id="texte-serpent" class="serpent-container">Bienvenue chez DADJIN</h1>
+        <p>Experts en construction, dragage et travaux maritimes</p>
+        <a href="#services" class="btn">Découvrir nos services</a>
+        </div>
+    </header>
+    
+    <!-- Section Services -->
+    <section id="services">
+        <h2 class="services-titles">Nos Services</h2>
+        <div class="services-container">
+        <div class="service">
+            <img src="images/jan-huber-kO8f82u73Es-unsplash.jpg" alt="Dragage">
+            <h3>Dragage</h3>
+            <p>Travaux de curage, nettoyage de ports, fleuves et lacs.</p>
+        </div>
+        <div class="service">
+            <img src="images/thomas-kinto-DYx-Da77wDg-unsplash.jpg" alt="Construction">
+            <h3>Construction</h3>
+            <p>Ouvrages solides : routes, berges, quais maritimes, etc.</p>
+        </div>
+        <div class="service">
+            <img src="images/jad20220831-eco-benin-eiffage-portcotonou-photo3-1256x628-1661949377 (1).webp" alt="Transport_Maritime">
+            <h3>Transport Maritime</h3>
+            <p>Services de logistique portuaire, affrètement, et transport de marchandises par voie navigable.</p>
+        </div>
+        
+        </div>
+    </section>
+    <!-- Footer -->
+
+     <!-- Chargement dynamique du footer -->
+     <div id="footer-container"></div>
+  
+  <script>
+    function performSearch() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        
+        if (!input) {
+            alert("Veuillez entrer un mot pour lancer la recherche.");
+            return;
+        }
+    
+        // Liste de mots-clés et redirections simples
+        if (input.includes("service") || input.includes("dragage") || input.includes("construction")) {
+            document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
+        } else if (input.includes("contact")) {
+            document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
+        } else if (input.includes("accueil")) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            alert("Aucun résultat trouvé pour : " + input);
+        }
+    }
+    </script>
+    
+    <script>
+        // Chargement du header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erreur lors du chargement du header:', error));
+    
+        // Chargement du footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => console.error('Erreur lors du chargement du footer:', error));
+    </script>
+
+    <script src="main.js"></script>
+
+    <script>
+         const texte = "Bienvenue chez Dadjin";
+        const container = document.getElementById("texte-serpent");
+
+        function animationTexte() {
+        container.innerHTML = ""; // Réinitialise le contenu
+
+        texte.split("").forEach((char, index) => {
+            const span = document.createElement("span");
+            span.textContent = char === " " ? "\u00A0" : char; // espace insécable pour garder l'espacement
+            span.classList.add("lettre");
+            span.style.animationDelay = `${index * 0.1}s`;
+            container.appendChild(span);
+        });
+
+        setTimeout(animationTexte, 5000 + texte.length * 100); // Relancer toutes les 5s
+        }
+
+        animationTexte();
+
+      </script>
+      
+      
+      
+          
+
+
+</body>
+</html>
