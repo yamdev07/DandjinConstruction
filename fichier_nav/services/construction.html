@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construction - Dandjin</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container construction-content">
+    <h1>Nos Projets de Construction</h1>
+    <p>
+      Chez <strong>Dandjin Dredging Depth & Construction Ltd</strong>, la construction est bien plus qu’un métier — c’est une responsabilité envers les générations futures. Nous réalisons des projets d'infrastructure de haute qualité sur l’ensemble du territoire béninois : routes, quais, digues, berges, bâtiments publics et privés.
+    </p>
+
+    <p>
+      Notre équipe d’ingénieurs, de techniciens et de chefs de chantier œuvre dans le respect strict des normes techniques et environnementales. Chaque projet est conçu pour durer, en tenant compte des réalités locales, des conditions climatiques et des besoins des populations.
+    </p>
+
+    <img class="construction-img" src="../images/463800478317001701896712.jpg" alt="Projet de construction au Bénin">
+
+    <p>
+      Nous avons par exemple contribué au <strong>Projet Asphaltage</strong>, un chantier de plus de 600 km de voiries urbaines dans neuf grandes villes du Bénin. Nous avons aussi participé à la <strong>construction de logements sociaux</strong> dans le cadre d’un programme ambitieux de l’État, avec des logements durables, accessibles et bien intégrés aux réseaux urbains.
+    </p>
+
+    <img class="construction-img" src="../images/chantier-construction-benin.jpg" alt="Marché en construction au Bénin">
+
+    <p>
+      En zone portuaire, notre expertise est mise à profit pour renforcer les berges et construire des quais capables de résister aux mouvements fluviaux. Ces infrastructures sont essentielles pour le développement économique, notamment dans le secteur logistique et maritime.
+    </p>
+
+    <p>
+      Grâce à notre approche rigoureuse et nos équipements de pointe, nous garantissons à nos partenaires un respect strict des délais et des budgets. Notre mission est claire : bâtir le Bénin de demain avec sérieux, innovation et engagement.
+    </p>
+
+    <img class="construction-img" src="../images/Benin_construction.jpg" alt="Chantier de construction d'un marché au Bénin">
+  </main>
+
+  <div style="text-align: center; margin: 40px 0;">
+    <a href="../service.html" class="btn">← Voir tous les services</a>
+  </div>
+
+  <div id="footer-container"></div>
+
+  <script>
+    fetch('../header.html').then(res => res.text()).then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+    fetch('../footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

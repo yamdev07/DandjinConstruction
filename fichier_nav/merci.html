@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merci pour votre message</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .merci-container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .merci-container h1 {
+      color: #2c7be5;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .merci-container p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    .countdown {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #2c7be5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="merci-container">
+    <h1>✅ Merci pour votre message !</h1>
+    <p>Nous reviendrons vers vous dans les plus brefs délais.</p>
+    <div class="countdown">Redirection vers l’accueil dans <span id="timer">5</span> secondes...</div>
+  </div>
+
+  <script>
+    let timer = 5;
+    const countdown = document.getElementById("timer");
+    const interval = setInterval(() => {
+      timer--;
+      countdown.textContent = timer;
+      if (timer <= 0) {
+        clearInterval(interval);
+        window.location.href = "index.html";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

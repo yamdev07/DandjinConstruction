@@ -6,7 +6,6 @@
     <title>Site Vitrine - Dandjin</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
 
@@ -16,9 +15,9 @@
     <!-- Bannière principale -->
     <header class="hero">
         <div class="hero-content">
-            <h1 id="texte-serpent" class="serpent-container">Bienvenue chez DADJIN</h1>
-        <p>Experts en construction, dragage et travaux maritimes</p>
-        <a href="#services" class="btn">Découvrir nos services</a>
+            <h1 id="texte-serpent" class="serpent-container">Bienvenue chez DANDJIN</h1>
+            <p>Experts en construction, dragage et travaux maritimes</p>
+            <a href="#services" class="btn">Découvrir nos services</a>
         </div>
     </header>
     
@@ -26,49 +25,86 @@
     <section id="services">
         <h2 class="services-titles">Nos Services</h2>
         <div class="services-container">
-        <div class="service">
-            <img src="images/jan-huber-kO8f82u73Es-unsplash.jpg" alt="Dragage">
-            <h3>Dragage</h3>
-            <p>Travaux de curage, nettoyage de ports, fleuves et lacs.</p>
-        </div>
-        <div class="service">
-            <img src="images/thomas-kinto-DYx-Da77wDg-unsplash.jpg" alt="Construction">
-            <h3>Construction</h3>
-            <p>Ouvrages solides : routes, berges, quais maritimes, etc.</p>
-        </div>
-        <div class="service">
-            <img src="images/jad20220831-eco-benin-eiffage-portcotonou-photo3-1256x628-1661949377 (1).webp" alt="Transport_Maritime">
-            <h3>Transport Maritime</h3>
-            <p>Services de logistique portuaire, affrètement, et transport de marchandises par voie navigable.</p>
-        </div>
-        
+            <div class="service">
+                <a href="services/dragage.html">
+                    <img src="images/jan-huber-kO8f82u73Es-unsplash.jpg" alt="Dragage">
+                </a>
+                <h3>Dragage</h3>
+                <p>Travaux de curage, nettoyage de ports, fleuves et lacs.</p>
+            </div>
+            <div class="service">
+                <a href="services/construction.html">
+                    <img src="images/thomas-kinto-DYx-Da77wDg-unsplash.jpg" alt="Construction">
+                </a>
+                <h3>Construction</h3>
+                <p>Ouvrages solides : routes, berges, quais maritimes, etc.</p>
+            </div>
+            <div class="service">
+                <a href="services/transport-maritime.html">
+                    <img src="images/jad20220831-eco-benin-eiffage-portcotonou-photo3-1256x628-1661949377 (1).webp" alt="Transport Maritime">
+                </a>
+                <h3>Transport Maritime</h3>
+                <p>Services de logistique portuaire, affrètement, et transport de marchandises par voie navigable.</p>
+            </div>
         </div>
     </section>
-    <!-- Footer -->
 
-     <!-- Chargement dynamique du footer -->
-     <div id="footer-container"></div>
-  
-  <script>
-    function performSearch() {
-        const input = document.getElementById("searchInput").value.toLowerCase();
-        
-        if (!input) {
-            alert("Veuillez entrer un mot pour lancer la recherche.");
-            return;
-        }
+    <!-- Section À propos de Dandjin -->
+    <section id="about" style="padding: 80px 20px; background-color: #f5f5f5;">
+        <h2 class="services-titles" style="text-align: center; margin-bottom: 40px;">À propos de Dandjin</h2>
+        <div class="about-container">
+            <img src="images/equipe.jpg" alt="Notre équipe sur le terrain">
+            <div>
+                <p>
+                    <strong>DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong> est une entreprise innovante spécialisée dans le dragage, la vente de sable et le développement de projets maritimes et côtiers. Présente au Bénin, au Ghana et dans toute l'Afrique de l'Ouest, notre équipe expérimentée s'engage à fournir des services de haute qualité, dans le respect des normes environnementales internationales.
+                </p>
+                <p>
+                    Nos opérations sont guidées par l'excellence, la durabilité et l'innovation. De la préparation du terrain à la livraison du sable le plus pur pour vos constructions, nous vous accompagnons à chaque étape, avec passion et précision.
+                </p>
+            </div>
+        </div>
+    </section>
     
-        // Liste de mots-clés et redirections simples
-        if (input.includes("service") || input.includes("dragage") || input.includes("construction")) {
-            document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
-        } else if (input.includes("contact")) {
-            document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
-        } else if (input.includes("accueil")) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            alert("Aucun résultat trouvé pour : " + input);
+    <!-- Témoignages clients -->
+    <section id="testimonials" style="padding: 80px 20px; background-color: white;">
+        <h2 class="services-titles" style="text-align: center; margin-bottom: 50px;">Ils nous font confiance</h2>
+        <div class="testimonials-container">
+            <div class="testimonial">
+                <p>"Travail impeccable pour notre projet de port. L'équipe est réactive, professionnelle et très engagée."</p>
+                <p><strong>— Société Maritime de Cotonou</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"Sable de qualité supérieure livré rapidement. Merci à Dandjin pour leur efficacité."</p>
+                <p><strong>— Bâtisseur Africa SA</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"Dandjin nous accompagne depuis plusieurs années : service irréprochable et respect des délais."</p>
+                <p><strong>— Constructeurs de l'Ouest</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chargement dynamique du footer -->
+    <div id="footer-container"></div>
+  
+    <script>
+        function performSearch() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            if (!input) {
+                alert("Veuillez entrer un mot pour lancer la recherche.");
+                return;
+            }
+
+            if (input.includes("service") || input.includes("dragage") || input.includes("construction")) {
+                document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
+            } else if (input.includes("contact")) {
+                document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
+            } else if (input.includes("accueil")) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert("Aucun résultat trouvé pour : " + input);
+            }
         }
-    }
     </script>
     
     <script>
@@ -79,7 +115,7 @@
                 document.getElementById('header-container').innerHTML = data;
             })
             .catch(error => console.error('Erreur lors du chargement du header:', error));
-    
+
         // Chargement du footer
         fetch('footer.html')
             .then(response => response.text())
@@ -89,32 +125,28 @@
             .catch(error => console.error('Erreur lors du chargement du footer:', error));
     </script>
 
-    <script src="main.js"></script>
-
     <script>
-         const texte = "Bienvenue chez Dadjin";
+        const texte = "Bienvenue chez DANDJIN DREDGING CONSTRUCTION";
         const container = document.getElementById("texte-serpent");
 
         function animationTexte() {
-        container.innerHTML = ""; // Réinitialise le contenu
+            container.innerHTML = ""; // Réinitialise le contenu
 
-        texte.split("").forEach((char, index) => {
-            const span = document.createElement("span");
-            span.textContent = char === " " ? "\u00A0" : char; // espace insécable pour garder l'espacement
-            span.classList.add("lettre");
-            span.style.animationDelay = `${index * 0.1}s`;
-            container.appendChild(span);
-        });
+            texte.split("").forEach((char, index) => {
+                const span = document.createElement("span");
+                span.textContent = char === " " ? "\u00A0" : char; // espace insécable pour garder l'espacement
+                span.classList.add("lettre");
+                span.style.animationDelay = `${index * 0.1}s`;
+                container.appendChild(span);
+            });
 
-        setTimeout(animationTexte, 5000 + texte.length * 100); // Relancer toutes les 5s
+            setTimeout(animationTexte, 5000 + texte.length * 100); // Relancer toutes les 5s
         }
 
         animationTexte();
+    </script>
 
-      </script>
-      
-      <script src="lang.js"></script>      
-
+    <script src="lang.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Maritime - Dandjin</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="container">
+    <h1>Transport Maritime</h1>
+    <p>Nous proposons des services de logistique maritime : affrètement, transport de matériaux et équipements, sécurisation des trajets fluviaux et côtiers.</p>
+    <img src="../images/transport-maritime.jpg" alt="Transport maritime">
+  </main>
+  <div style="margin-top: 30px;">
+    <a href="../service.html" class="btn">← Voir tous les services</a>
+  </div>
+  
+  <div id="footer-container"></div>
+  <script>
+    fetch('../header.html').then(res => res.text()).then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+    fetch('../footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

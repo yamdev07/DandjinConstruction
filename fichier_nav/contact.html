@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nous Contacter - Dandjin</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <section class="contact-section">
+    <h1>Contactez-Nous</h1>
+
+    <div class="contact-info">
+      <p><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:contact@dandjin.com">dandjindredginggh@gmail.com</a></p>
+      <p><i class="fas fa-phone"></i> +229 90 00 00 00</p>
+    </div>
+
+    <form class="contact-form" action="https://formspree.io/f/xzzrzdwo" method="post">
+      <label for="name">Nom complet</label>
+      <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+      <label for="email">Adresse e-mail</label>
+      <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required>
+
+      <label for="message">Votre message</label>
+      <textarea id="message" name="message" rows="6" placeholder="Écrivez votre message ici..." required></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <div class="socials">
+      <a href="https://www.facebook.com/share/15n318dXD3/"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/dandjinl?igsh=YzljYTk1ODg3Zg=="><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script>
+    // Inclusion dynamique du header/footer
+    fetch('header.html').then(r => r.text()).then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+
+    fetch('footer.html').then(r => r.text()).then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+
+    // Validation simple
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Veuillez remplir tous les champs.');
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>
