@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aménagement Urbain - Dandjin</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="service-section">
+    <div class="container">
+      <h1>Aménagement Urbain</h1>
+      <img src="../images/hq720.jpg" alt="Projet d’aménagement urbain au Ghana" class="service-image">
+      <p>
+        L’aménagement urbain constitue un pilier fondamental du développement durable et de l’amélioration du cadre de vie des populations. Chez <strong>DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong>, nous nous engageons à concevoir, planifier et réaliser des projets urbains qui répondent aux besoins réels des citoyens, tout en tenant compte des enjeux environnementaux, sociaux et économiques.
+      </p>
+      <p>
+        Nos interventions s’étendent à la modernisation des infrastructures de voirie, l’optimisation des flux de circulation, la création d’espaces verts, l’équipement des quartiers en services essentiels et la mise en valeur du patrimoine urbain. Nous travaillons en collaboration avec les collectivités locales, les urbanistes et les partenaires techniques pour garantir la cohérence et la durabilité de chaque projet.
+      </p>
+      <p>
+        Nos services couvrent notamment :
+        <ul>
+          <li>La conception et la réalisation de plans d’urbanisme intégrés ;</li>
+          <li>La réhabilitation et le pavage de routes secondaires et tertiaires ;</li>
+          <li>L’installation de réseaux d’éclairage public et de signalisation intelligente ;</li>
+          <li>L’implantation de mobilier urbain durable (bancs, abribus, corbeilles, etc.) ;</li>
+          <li>La construction de places publiques, trottoirs accessibles et zones piétonnes ;</li>
+          <li>La mise en place de solutions d’assainissement urbain et de drainage.</li>
+        </ul>
+      </p>
+      <p>
+        Notre expertise, nourrie par une expérience de terrain au Ghana et en Afrique de l’Ouest, nous permet de proposer des solutions sur mesure, innovantes et conformes aux standards internationaux. Chaque aménagement que nous réalisons vise à renforcer la résilience des villes face aux défis climatiques, démographiques et économiques.
+      </p>
+      <p>
+        Grâce à notre approche participative, les projets sont conçus pour répondre aux attentes des populations locales, tout en favorisant l’inclusion sociale, la sécurité urbaine et l’accessibilité universelle.
+      </p>
+      <a href="../service.html" class="btn">← Voir tous les services</a>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    fetch('../header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      });
+    fetch('../footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

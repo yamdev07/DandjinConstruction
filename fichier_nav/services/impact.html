@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impact Communautaire - Dandjin</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container">
+    <h1 class="centered-title">Impact Communautaire</h1>
+
+    <section class="impact-section">
+      <p>
+        Chez <strong>DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong>, notre vision dépasse la simple exécution de projets techniques. Nous sommes profondément engagés dans une démarche de développement humain et communautaire durable. À travers nos activités, nous nous efforçons de créer un impact positif et mesurable sur les communautés locales, en favorisant l’emploi, la formation et les synergies avec des acteurs du développement.
+      </p>
+    </section>
+
+    <section class="impact-section">
+      <h2>Création d’emplois durables</h2>
+      <p>
+        Nos projets de construction et de dragage génèrent chaque année des centaines d’emplois directs et indirects à travers le Bénin. Nous privilégions l’embauche locale afin de renforcer les économies régionales, améliorer les conditions de vie et offrir des perspectives d’avenir aux jeunes diplômés comme aux ouvriers qualifiés.
+      </p>
+    </section>
+
+    <section class="impact-section">
+      <h2>Formation locale et transfert de compétences</h2>
+      <p>
+        Nous mettons en place des programmes de formation continue pour nos équipes locales, couvrant des domaines tels que la sécurité sur les chantiers, les techniques de construction modernes, la gestion environnementale et l’utilisation de nouvelles technologies. Ces formations visent à construire une main-d'œuvre qualifiée, compétitive et résiliente.
+      </p>
+    </section>
+    
+    <img class="rounded-img" src="../images/impact.jpg" alt="Impact communautaire de la construction au Bénin">
+    <section class="impact-section">
+      <h2>Partenariats avec ONG, startups et universités</h2>
+      <p>
+        Pour amplifier notre impact, nous collaborons avec des ONG locales engagées dans l’éducation, l’environnement ou la santé. Nous soutenons également des startups innovantes œuvrant dans le secteur des énergies renouvelables, du recyclage ou des matériaux durables. Nos partenariats avec des universités béninoises permettent aux étudiants de participer à nos projets à travers des stages, des recherches appliquées ou des projets de terrain.
+      </p>
+    </section>
+
+    <section class="impact-section">
+      <h2>Développement inclusif et solidaire</h2>
+      <p>
+        Chaque chantier est conçu comme une opportunité de croissance pour les communautés. Cela inclut la mise à disposition d’infrastructures temporaires, l’aménagement de routes d’accès, l’approvisionnement local en matériaux, et l’écoute active des populations pour assurer un ancrage territorial fort. Le respect des droits humains, l’équité et la participation citoyenne sont au cœur de nos valeurs.
+      </p>
+    </section>
+
+
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="../service.html" class="btn">← Retour aux services</a>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    fetch('../header.html').then(res => res.text()).then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+    fetch('../footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

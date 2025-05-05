@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Maritime - Dandjin</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="container service-detail">
+    <h1 class="centered-title">Notre Engagement pour un Développement Durable</h1>
+  
+    <div class="boxed-paragraph">
+      <p>
+        Chez <strong>DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong>, le développement durable ne constitue pas une option mais une nécessité. Dans un monde confronté à de profondes mutations environnementales, sociales et économiques, nous avons fait le choix d’intégrer des pratiques responsables à tous les niveaux de notre activité.
+      </p>
+    </div>
+  
+    <div class="boxed-paragraph">
+      <p>
+        Notre vision repose sur un principe fondamental : bâtir des infrastructures solides tout en protégeant les générations futures. Ainsi, chaque chantier lancé fait l’objet d’une évaluation rigoureuse de son impact écologique et social. Nous privilégions l’utilisation de matériaux respectueux de l’environnement, encourageons les circuits courts et veillons à réduire l’empreinte carbone de nos opérations.
+      </p>
+      <img class="rounded-img" src="../images/maison-sindou.jpg" alt="Construction écologique en Afrique de l’Ouest" />
+    </div>
+  
+    <div class="boxed-paragraph">
+      <p>
+        Nos équipes techniques sont formées aux normes internationales en matière de construction durable. Cela inclut la gestion des eaux, le recyclage des matériaux de chantier, l’optimisation des consommations énergétiques et la préservation de la biodiversité autour des zones d’intervention. Cette expertise nous permet d’intervenir avec efficacité dans des milieux sensibles comme les zones côtières ou fluviales.
+      </p>
+    </div>
+  
+    <div class="boxed-paragraph">
+      <p>
+        Sur le plan social, nous croyons à une croissance inclusive. Nos projets favorisent l’emploi local, la formation des jeunes, et la participation active des communautés riveraines. Par exemple, pour chaque grand chantier, nous mettons en place un plan de recrutement local, un programme de sensibilisation et des initiatives sociales (points d’eau, sanitaires, routes secondaires).
+      </p>
+    </div>
+  
+    <div class="boxed-paragraph">
+      <p>
+        Notre politique RSE est pilotée par une équipe dédiée qui veille au respect des engagements pris dans notre charte éthique. Cette charte repose sur trois piliers : intégrité, transparence et responsabilité. Elle est partagée avec nos partenaires et prestataires pour garantir une chaîne de valeur cohérente avec nos valeurs.
+      </p>
+    </div>
+  
+    <div class="boxed-paragraph">
+      <p>
+        Enfin, dans une logique de transparence et d’amélioration continue, nous suivons des indicateurs de performance environnementale et sociale. Ces indicateurs sont communiqués chaque année à travers un rapport d’impact interne, et nous permettent d’ajuster nos pratiques selon les retours du terrain et l’évolution des normes internationales.
+      </p>
+    </div>
+  
+  
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="../service.html" class="btn">← Voir tous les services</a>
+    </div>
+  </main>
+  
+
+  <div id="footer-container"></div>
+
+  <script>
+    fetch('../header.html').then(res => res.text()).then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+    fetch('../footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

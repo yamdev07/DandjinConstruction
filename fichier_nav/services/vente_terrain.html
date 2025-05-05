@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vente de Terrains - Dandjin</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container">
+    <h1 style="text-align: center;">Vente de Terrains</h1>
+
+    <section class="card">
+      <p>
+        Chez <strong>DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong>, nous considérons le foncier comme un levier de développement stratégique. Nous mettons à la disposition de nos clients des terrains soigneusement sélectionnés, situés dans des zones à fort potentiel économique, avec des garanties administratives et juridiques solides. Nos offres sont pensées pour répondre à des besoins variés : projets résidentiels, immobiliers, commerciaux, industriels ou agricoles.
+      </p>
+    </section>
+
+    <section class="card">
+      <p>
+        Chaque parcelle fait l’objet d’un processus de vérification rigoureux avant d’être mise en vente. Cela inclut la consultation du cadastre, la vérification des titres fonciers, l’analyse des plans d’urbanisme, ainsi que la validation des infrastructures environnantes. Cette approche garantit à nos clients une acquisition sécurisée et conforme à la réglementation béninoise en matière de propriété foncière.
+      </p>
+    </section>
+
+    <section class="card">
+      <p>
+        Nos terrains sont généralement localisés dans des quartiers urbains en développement ou des zones périphériques bien desservies, avec un accès direct aux routes principales, aux réseaux d’électricité, d’eau et d’assainissement. Certaines parcelles bénéficient même de projets intégrés : voiries, espaces verts, zones commerciales, écoles et centres de santé.
+      </p>
+    </section>
+
+    <section class="card">
+      <p>
+        Dans le cadre de notre engagement en faveur du développement durable, nous privilégions des projets respectueux de l’environnement, pensés pour s’intégrer harmonieusement dans leur écosystème social et urbain. Nous collaborons avec les autorités locales pour assurer un aménagement maîtrisé du territoire, tenant compte des réalités climatiques, géographiques et économiques.
+      </p>
+    </section>
+
+    <section class="card">
+      <p>
+        En achetant avec DANDJIN, vous bénéficiez d’un accompagnement personnalisé : visites guidées sur site, conseils juridiques, facilitation des démarches administratives, et suivi après-vente. Nous travaillons en étroite collaboration avec des notaires, géomètres et experts fonciers afin de vous garantir un service professionnel et transparent, de la réservation à la livraison du terrain.
+      </p>
+    </section>
+
+    <img class="rounded-img" src="../images/residential-properties-in-Ghana-1024x585.webp" alt="Terrains aménagés pour projet immobilier" />
+
+    <section class="card">
+      <p>
+        Nos programmes de vente sont aussi conçus pour stimuler l’emploi local, favoriser l’entrepreneuriat immobilier et promouvoir l’accès à la propriété pour les jeunes et les ménages à revenus modestes. Nous croyons qu’un foncier bien géré est un pilier de croissance économique, de justice sociale et de développement urbain inclusif.
+      </p>
+    </section>
+
+    <img class="rounded-img" src="../images/application-for-land-purchase-in-Ghana-1024x585.webp" alt="Vente légale de terrain au Bénin" />
+
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="../service.html" class="btn">← Voir tous les services</a>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    fetch('../header.html').then(res => res.text()).then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+    fetch('../footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+  </script>
+</body>
+</html>
