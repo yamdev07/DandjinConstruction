@@ -15,51 +15,51 @@
     <!-- Bannière principale -->
     <header class="hero">
         <div class="hero-content">
-            <h1 id="texte-serpent" class="serpent-container">Bienvenue chez DANDJIN</h1>
-            <p>Experts en construction, dragage et travaux maritimes</p>
-            <a href="#services" class="btn">Découvrir nos services</a>
+            <h1 id="texte-serpent" class="serpent-container" data-i18n="welcome">Bienvenue chez DANDJIN</h1>
+            <p data-i18n="tagline">Experts en construction, dragage et travaux maritimes</p>
+            <a href="#services" class="btn" data-i18n="discoverServices">Découvrir nos services</a>
         </div>
     </header>
     
     <!-- Section Services -->
     <section id="services">
-        <h2 class="services-titles">Nos Services</h2>
+        <h2 class="services-titles" data-i18n="services">Nos Services</h2>
         <div class="services-container">
             <div class="service">
                 <a href="services/dragage.html">
                     <img src="images/jan-huber-kO8f82u73Es-unsplash.jpg" alt="Dragage">
                 </a>
                 <h3>Dragage</h3>
-                <p>Travaux de curage, nettoyage de ports, fleuves et lacs.</p>
+                <p data-i18n="dragageText">Travaux de curage, nettoyage de ports, fleuves et lacs.</p>
             </div>
             <div class="service">
                 <a href="services/construction.html">
                     <img src="images/thomas-kinto-DYx-Da77wDg-unsplash.jpg" alt="Construction">
                 </a>
                 <h3>Construction</h3>
-                <p>Ouvrages solides : routes, berges, quais maritimes, etc.</p>
+                <p data-i18n="constructionText">Ouvrages solides : routes, berges, quais maritimes, etc.</p>
             </div>
             <div class="service">
                 <a href="services/transport-maritime.html">
                     <img src="images/jad20220831-eco-benin-eiffage-portcotonou-photo3-1256x628-1661949377 (1).webp" alt="Transport Maritime">
                 </a>
                 <h3>Transport Maritime</h3>
-                <p>Services de logistique portuaire, affrètement, et transport de marchandises par voie navigable.</p>
+                <p data-i18n="transportText">Services de logistique portuaire, affrètement, et transport de marchandises par voie navigable.</p>
             </div>
         </div>
     </section>
 
     <!-- Section À propos de Dandjin -->
     <section id="about" style="padding: 80px 20px; background-color: #f5f5f5;">
-        <h2 class="services-titles" style="text-align: center; margin-bottom: 40px;">À propos de Dandjin</h2>
+        <h2 class="services-titles" style="text-align: center; margin-bottom: 40px;" data-i18n="about">À propos de Dandjin</h2>
         <div class="about-container">
             <img src="images/equipe.jpg" alt="Notre équipe sur le terrain">
             <div>
-                <p>
-                    <strong>DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong> est une entreprise innovante spécialisée dans le dragage, la vente de sable et le développement de projets maritimes et côtiers. Présente au Bénin, au Ghana et dans toute l'Afrique de l'Ouest, notre équipe expérimentée s'engage à fournir des services de haute qualité, dans le respect des normes environnementales internationales.
+                <p data-i18n="about1">
+                    DANDJIN DREDGING DEPTH & CONSTRUCTION LTD est une entreprise innovante spécialisée dans le dragage, la vente de sable...
                 </p>
-                <p>
-                    Nos opérations sont guidées par l'excellence, la durabilité et l'innovation. De la préparation du terrain à la livraison du sable le plus pur pour vos constructions, nous vous accompagnons à chaque étape, avec passion et précision.
+                <p data-i18n="about2">
+                    Nos opérations sont guidées par l'excellence, la durabilité et l'innovation.
                 </p>
             </div>
         </div>
@@ -67,18 +67,18 @@
     
     <!-- Témoignages clients -->
     <section id="testimonials" style="padding: 80px 20px; background-color: white;">
-        <h2 class="services-titles" style="text-align: center; margin-bottom: 50px;">Ils nous font confiance</h2>
+        <h2 class="services-titles" style="text-align: center; margin-bottom: 50px;" data-i18n="trustedBy">Ils nous font confiance</h2>
         <div class="testimonials-container">
             <div class="testimonial">
-                <p>"Travail impeccable pour notre projet de port. L'équipe est réactive, professionnelle et très engagée."</p>
+                <p data-i18n="testimonial1">"Travail impeccable pour notre projet de port..."</p>
                 <p><strong>— Société Maritime de Cotonou</strong></p>
             </div>
             <div class="testimonial">
-                <p>"Sable de qualité supérieure livré rapidement. Merci à Dandjin pour leur efficacité."</p>
+                <p data-i18n="testimonial2">"Sable de qualité supérieure livré rapidement..."</p>
                 <p><strong>— Bâtisseur Africa SA</strong></p>
             </div>
             <div class="testimonial">
-                <p>"Dandjin nous accompagne depuis plusieurs années : service irréprochable et respect des délais."</p>
+                <p data-i18n="testimonial3">"Dandjin nous accompagne depuis plusieurs années..."</p>
                 <p><strong>— Constructeurs de l'Ouest</strong></p>
             </div>
         </div>
@@ -130,23 +130,33 @@
         const container = document.getElementById("texte-serpent");
 
         function animationTexte() {
-            container.innerHTML = ""; // Réinitialise le contenu
+            container.innerHTML = "";
 
             texte.split("").forEach((char, index) => {
                 const span = document.createElement("span");
-                span.textContent = char === " " ? "\u00A0" : char; // espace insécable pour garder l'espacement
+                span.textContent = char === " " ? "\u00A0" : char;
                 span.classList.add("lettre");
                 span.style.animationDelay = `${index * 0.1}s`;
                 container.appendChild(span);
             });
 
-            setTimeout(animationTexte, 5000 + texte.length * 100); // Relancer toutes les 5s
+            setTimeout(animationTexte, 5000 + texte.length * 100);
         }
 
         animationTexte();
     </script>
 
     <script src="lang.js"></script>
-
+    <script>
+        // Déclencheur du changement de langue
+        document.addEventListener("DOMContentLoaded", function () {
+            const select = document.getElementById("language-select");
+            if (select) {
+                select.addEventListener("change", function () {
+                    setLanguage(this.value);
+                });
+            }
+        });
+    </script>
 </body>
 </html>

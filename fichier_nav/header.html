@@ -1,25 +1,24 @@
 <nav>
-    <div class="topbar-left">
-      <a href="/fichier_nav/index.html">
-        <img src="/fichier_nav/images/Entreprise_tonton_logo.png" alt="Logo Dandjin" class="logo-img">
-      </a>
-    </div>
-  
-    <div class="onglets">
-      <a href="/fichier_nav/index.html">Accueil</a>
-      <a href="/fichier_nav/aPropos.html">À propos</a>
-      <a href="/fichier_nav/service.html">Services</a>
-      <a href="/fichier_nav/contact.html">Contactez-nous</a>
-    </div>
-  
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Rechercher...">
-      <button onclick="performSearch()"><i class="fas fa-search"></i></button>
-    </div>
-  
-    <select id="language-select">
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-    </select>
-  </nav>
-  
+  <div class="topbar-left">
+    <a href="/fichier_nav/index.html">
+      <img src="/fichier_nav/images/Entreprise_tonton_logo.png" alt="Logo Dandjin" class="logo-img">
+    </a>
+  </div>
+
+  <div class="onglets">
+    <a href="/fichier_nav/index.html" data-i18n="home">Accueil</a>
+    <a href="/fichier_nav/aPropos.html" data-i18n="about">À propos</a>
+    <a href="/fichier_nav/service.html" data-i18n="services">Services</a>
+    <a href="/fichier_nav/contact.html" data-i18n="contact">Contactez-nous</a>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher..." data-i18n-placeholder="search">
+    <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+  </div>
+
+  <select id="language-select">
+    <option value="fr">Français</option>
+    <option value="en">English</option>
+  </select>
+</nav>
