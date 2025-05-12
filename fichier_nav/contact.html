@@ -42,33 +42,46 @@
 
   <div id="footer-container"></div>
 
-  <!-- Inclus header/footer -->
+  <!-- Chargement dynamique du header, footer et traduction -->
   <script>
-    fetch('header.html').then(r => r.text()).then(data => {
-      document.getElementById('header-container').innerHTML = data;
-    });
+    fetch('header.html')
+      .then(r => r.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
 
-    fetch('footer.html').then(r => r.text()).then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-  </script>
+        // Langue actuelle
+        const lang = localStorage.getItem('lang') || 'fr';
 
-  <!-- Traduction dynamique -->
-  <script>
-    const lang = localStorage.getItem('lang') || 'fr';
+        // Appliquer la langue au sélecteur
+        const langSelect = document.getElementById('language-select');
+        if (langSelect) {
+          langSelect.value = lang;
+          langSelect.addEventListener('change', function () {
+            localStorage.setItem('lang', this.value);
+            location.reload();
+          });
+        }
 
-    fetch(`lang/${lang}.json`)
-      .then(res => res.json())
-      .then(translations => {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
-          if (translations[key]) el.innerHTML = translations[key];
-        });
+        // Appliquer les traductions après chargement du header
+        fetch(`lang/${lang}.json`)
+          .then(res => res.json())
+          .then(translations => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+              const key = el.getAttribute('data-i18n');
+              if (translations[key]) el.innerHTML = translations[key];
+            });
 
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-          const key = el.getAttribute('data-i18n-placeholder');
-          if (translations[key]) el.setAttribute('placeholder', translations[key]);
-        });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+              const key = el.getAttribute('data-i18n-placeholder');
+              if (translations[key]) el.setAttribute('placeholder', translations[key]);
+            });
+          });
+      });
+
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
       });
   </script>
 
