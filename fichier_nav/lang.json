@@ -81,6 +81,7 @@
         "contact.placeholder.name": "Votre nom",
         "contact.placeholder.email": "exemple@gmail.com",
         "contact.placeholder.message": "Écrivez votre message ici..."
+        
 
     },
     "en": {
@@ -165,7 +166,7 @@
         "contact.placeholder.name": "Your name",
         "contact.placeholder.email": "example@gmail.com",
         "contact.placeholder.message": "Write your message here..."
- 
+        
     }
   }
   

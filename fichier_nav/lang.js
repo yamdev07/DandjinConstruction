@@ -1,11 +1,9 @@
-// Fonction pour charger les traductions depuis le fichier JSON
+// Charger le fichier global avec toutes les langues
 async function loadTranslations() {
-  const response = await fetch('/lang.json');
-  const data = await response.json();
-  return data;
+  const response = await fetch('lang.json'); // un seul fichier
+  return await response.json();
 }
 
-// Appliquer les traductions dynamiquement
 function applyTranslations(lang, translations) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -13,22 +11,28 @@ function applyTranslations(lang, translations) {
       el.textContent = translations[lang][key];
     }
   });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
 }
 
-// Détection de la langue et application des traductions
 document.addEventListener('DOMContentLoaded', async () => {
-  const translations = await loadTranslations();
-  const currentLang = localStorage.getItem('lang') || 'fr'; // Langue par défaut
-  applyTranslations(currentLang, translations);
+  const currentLang = localStorage.getItem('lang') || 'fr';
+  const allTranslations = await loadTranslations();
+  applyTranslations(currentLang, allTranslations);
 
-  // Gestion du changement de langue via un sélecteur
   const languageSelect = document.getElementById('language-select');
   if (languageSelect) {
     languageSelect.value = currentLang;
-    languageSelect.addEventListener('change', (e) => {
+
+    languageSelect.addEventListener('change', async (e) => {
       const selectedLang = e.target.value;
       localStorage.setItem('lang', selectedLang);
-      applyTranslations(selectedLang, translations);
+      applyTranslations(selectedLang, allTranslations);
     });
   }
 });

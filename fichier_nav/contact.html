@@ -42,8 +42,8 @@
 
   <div id="footer-container"></div>
 
+  <!-- Inclus header/footer -->
   <script>
-    // Inclusion dynamique du header/footer
     fetch('header.html').then(r => r.text()).then(data => {
       document.getElementById('header-container').innerHTML = data;
     });
@@ -51,22 +51,9 @@
     fetch('footer.html').then(r => r.text()).then(data => {
       document.getElementById('footer-container').innerHTML = data;
     });
-
-    // Validation simple
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !message) {
-        alert('Veuillez remplir tous les champs.');
-        e.preventDefault();
-      }
-    });
   </script>
 
-  <!-- Script de traduction dynamique -->
-  <script src="i18n.js"></script>
+  <!-- Traduction dynamique -->
   <script>
     const lang = localStorage.getItem('lang') || 'fr';
 
@@ -83,6 +70,20 @@
           if (translations[key]) el.setAttribute('placeholder', translations[key]);
         });
       });
+  </script>
+
+  <!-- Validation simple -->
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Veuillez remplir tous les champs.');
+        e.preventDefault();
+      }
+    });
   </script>
 
 </body>
