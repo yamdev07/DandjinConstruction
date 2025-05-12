@@ -1,6 +1,6 @@
 // Fonction pour charger les traductions depuis le fichier JSON
 async function loadTranslations() {
-  const response = await fetch('lang.json');
+  const response = await fetch('/lang.json');
   const data = await response.json();
   return data;
 }
