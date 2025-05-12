@@ -125,38 +125,71 @@
             .catch(error => console.error('Erreur lors du chargement du footer:', error));
     </script>
 
-    <script>
-        const texte = "Bienvenue chez DANDJIN DREDGING CONSTRUCTION";
-        const container = document.getElementById("texte-serpent");
+<script src="lang.js"></script>
 
-        function animationTexte() {
-            container.innerHTML = "";
+<script>
+    const texte = "Bienvenue chez DANDJIN DREDGING CONSTRUCTION";
+    const container = document.getElementById("texte-serpent");
 
-            texte.split("").forEach((char, index) => {
-                const span = document.createElement("span");
-                span.textContent = char === " " ? "\u00A0" : char;
-                span.classList.add("lettre");
-                span.style.animationDelay = `${index * 0.1}s`;
-                container.appendChild(span);
-            });
+    function animationTexte() {
+        container.innerHTML = "";
+        texte.split("").forEach((char, index) => {
+            const span = document.createElement("span");
+            span.textContent = char === " " ? "\u00A0" : char;
+            span.classList.add("lettre");
+            span.style.animationDelay = `${index * 0.1}s`;
+            container.appendChild(span);
+        });
+        setTimeout(animationTexte, 5000 + texte.length * 100);
+    }
 
-            setTimeout(animationTexte, 5000 + texte.length * 100);
-        }
+    animationTexte();
 
-        animationTexte();
-    </script>
+    const selectedLang = localStorage.getItem("lang") || "fr";
 
-    <script src="lang.js"></script>
-    <script>
-        // Déclencheur du changement de langue
-        document.addEventListener("DOMContentLoaded", function () {
+    // Charger le header, puis appliquer la langue et ajouter l'écouteur
+    fetch('header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
             const select = document.getElementById("language-select");
             if (select) {
+                select.value = selectedLang;
                 select.addEventListener("change", function () {
+                    localStorage.setItem("lang", this.value);
                     setLanguage(this.value);
                 });
             }
+            setLanguage(selectedLang);
         });
-    </script>
+
+    // Charger le footer, puis appliquer la langue
+    fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('footer-container').innerHTML = data;
+            setLanguage(selectedLang);
+        });
+
+    // Recherche intelligente
+    function performSearch() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        if (!input) {
+            alert("Veuillez entrer un mot pour lancer la recherche.");
+            return;
+        }
+        if (input.includes("service") || input.includes("dragage") || input.includes("construction")) {
+            document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
+        } else if (input.includes("contact")) {
+            document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
+        } else if (input.includes("accueil")) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            alert("Aucun résultat trouvé pour : " + input);
+        }
+    }
+</script>
+
+    
 </body>
 </html>

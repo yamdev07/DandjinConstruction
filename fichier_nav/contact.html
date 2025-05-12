@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nous Contacter - Dandjin</title>
+  <title data-i18n="contact.title">Nous Contacter - Dandjin</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -12,31 +12,31 @@
   <div id="header-container"></div>
 
   <section class="contact-section">
-    <h1>Contactez-Nous</h1>
+    <h1 data-i18n="contact.title">Contactez-Nous</h1>
 
     <div class="contact-info">
-      <p><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</p>
+      <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact.city">Cotonou, Bénin</span></p>
       <p><i class="fas fa-envelope"></i> <a href="mailto:contact@dandjin.com">dandjindredginggh@gmail.com</a></p>
-      <p><i class="fas fa-phone"></i> +229 90 00 00 00</p>
+      <p><i class="fas fa-phone"></i> <span data-i18n="contact.phone">+229 90 00 00 00</span></p>
     </div>
 
     <form class="contact-form" action="https://formspree.io/f/xzzrzdwo" method="post">
-      <label for="name">Nom complet</label>
-      <input type="text" id="name" name="name" placeholder="Votre nom" required>
+      <label for="name" data-i18n="contact.fullname">Nom complet</label>
+      <input type="text" id="name" name="name" placeholder="Votre nom" data-i18n-placeholder="contact.placeholder.name" required>
 
-      <label for="email">Adresse e-mail</label>
-      <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required>
+      <label for="email" data-i18n="contact.email">Adresse e-mail</label>
+      <input type="email" id="email" name="email" placeholder="exemple@gmail.com" data-i18n-placeholder="contact.placeholder.email" required>
 
-      <label for="message">Votre message</label>
-      <textarea id="message" name="message" rows="6" placeholder="Écrivez votre message ici..." required></textarea>
+      <label for="message" data-i18n="contact.message">Votre message</label>
+      <textarea id="message" name="message" rows="6" placeholder="Écrivez votre message ici..." data-i18n-placeholder="contact.placeholder.message" required></textarea>
 
-      <button type="submit">Envoyer</button>
+      <button type="submit" data-i18n="contact.send">Envoyer</button>
     </form>
 
     <div class="socials">
       <a href="https://www.facebook.com/share/15n318dXD3/"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/dandjinl?igsh=YzljYTk1ODg3Zg=="><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/dandjinl"><i class="fab fa-instagram"></i></a>
     </div>
   </section>
 
@@ -63,6 +63,26 @@
         e.preventDefault();
       }
     });
+  </script>
+
+  <!-- Script de traduction dynamique -->
+  <script src="i18n.js"></script>
+  <script>
+    const lang = localStorage.getItem('lang') || 'fr';
+
+    fetch(`lang/${lang}.json`)
+      .then(res => res.json())
+      .then(translations => {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[key]) el.innerHTML = translations[key];
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (translations[key]) el.setAttribute('placeholder', translations[key]);
+        });
+      });
   </script>
 
 </body>

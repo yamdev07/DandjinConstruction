@@ -31,11 +31,11 @@
     
                 <h2 data-i18n="offers_title">Nos offres</h2>
                 <p data-i18n="offers_text">
-                    Découvrez nos opportunités de recrutement et devenez partenaire. Pour plus de détails, cliquez ici : 
-                    <a href="https://sites.google.com/view/dandjindredgingdepthco/recrutements-partenaires" target="_blank" class="styled-link">
-                        recrutements-partenaires
+                    Discover our recruitment opportunities and become a partner. For more details, click here:
+                    <a href="https://sites.google.com/view/dandjindredgingdepthco/recrutements-partenaires" target="_blank" class="styled-link" data-i18n="offers_link">
+                      recrutements-partenaires
                     </a>.
-                </p>
+                  </p>
     
                 <h2 data-i18n="commitments_title">Nos engagements</h2>
                 <ul>
@@ -78,23 +78,35 @@
     <!-- Conteneur de pied de page -->
     <div id="footer-container"></div>
 
+    <script src="lang.js"></script>
     <script>
-        // Chargement du header
+        const selectedLang = localStorage.getItem("lang") || "fr";
+
+        // Charger le header
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
+
+                const select = document.getElementById("language-select");
+                if (select) {
+                    select.value = selectedLang;
+                    select.addEventListener("change", function () {
+                        localStorage.setItem("lang", this.value);
+                        setLanguage(this.value);
+                    });
+                }
+
+                setLanguage(selectedLang);
             });
 
-        // Chargement du footer
+        // Charger le footer
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
+                setLanguage(selectedLang);
             });
     </script>
-    <script src="main.js"></script>
-    <script src="lang.js"></script>
-
 </body>
 </html>

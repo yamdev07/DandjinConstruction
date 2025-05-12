@@ -1330,3 +1330,39 @@ img {
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+.social-icon {
+  font-size: 24px;
+  color: #333;
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Zoom + halo par plateforme */
+.social-link:hover .fa-facebook-f {
+  color: #1877f2;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #1877f2;
+}
+
+.social-link:hover .fa-twitter {
+  color: #1da1f2;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #1da1f2;
+}
+
+.social-link:hover .fa-linkedin-in {
+  color: #0077b5;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #0077b5;
+}
+
+.social-link:hover .fa-instagram {
+  color: #e4405f;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #e4405f;
+}
+
+.social-link:hover .fa-youtube {
+  color: #ff0000;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #ff0000;
+}
