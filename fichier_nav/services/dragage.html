@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="dragage_title">Dragage de sable - Dandjin</title>
+  <title>Dragage de sable - Dandjin</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -79,7 +79,6 @@
         document.getElementById('footer-container').innerHTML = data;
       });
 
-    // Animation au scroll
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = {
       threshold: 0.2,
@@ -97,6 +96,7 @@
       appearOnScroll.observe(fader);
     });
   </script>
+  <script src="../../lang.js"></script>
 
 </body>
 </html>

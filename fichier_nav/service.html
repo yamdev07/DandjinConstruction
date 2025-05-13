@@ -15,49 +15,49 @@
           <h2 class="services-titles" data-i18n="services_title">Nos Services</h2>
           <div class="services-grid">
             
-            <a href="services/dragage.html" class="service-card">
+            <a href="./services/dragage.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-water icon"></i>
               <h3 data-i18n="dragage_title">Dragage de sable</h3>
               <p data-i18n="dragage_text">Extraction responsable de sable lagunaire de haute qualité...</p>
             </a>
             
-            <a href="services/vente-sable.html" class="service-card">
+            <a href="./services/vente-sable.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-cubes icon"></i>
               <h3 data-i18n="vente_sable_title">Vente de sable</h3>
               <p data-i18n="vente_sable_text">Distribution de sable fin purifié destiné à divers projets de construction et d'infrastructure.</p>
             </a>
             
-            <a href="services/construction.html" class="service-card">
+            <a href="./services/construction.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-hard-hat icon"></i>
               <h3 data-i18n="construction_title">Construction</h3>
               <p data-i18n="construction_text">Réalisation d'ouvrages solides : routes, quais, berges et infrastructures urbaines durables.</p>
             </a>
             
-            <a href="services/amenagement.html" class="service-card">
+            <a href="./services/amenagement.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-city icon"></i>
               <h3 data-i18n="amenagement_title">Aménagement urbain</h3>
               <p data-i18n="amenagement_text">Création de cités modernes sur zones remblayées avec logements, commerces et loisirs.</p>
             </a>
             
-            <a href="services/transport-maritime.html" class="service-card">
+            <a href="./services/transport-maritime.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-ship icon"></i>
               <h3 data-i18n="transport_title">Transport maritime</h3>
               <p data-i18n="transport_text">Développement de voies navigables pour le transport sécurisé de personnes et marchandises.</p>
             </a>
             
-            <a href="services/Developpement.html" class="service-card">
+            <a href="./services/Developpement.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-leaf icon"></i>
               <h3 data-i18n="developpement_title">Développement durable</h3>
               <p data-i18n="developpement_text">Protection de l’environnement, lutte contre l’érosion, gestion des ressources naturelles.</p>
             </a>
             
-            <a href="services/impact.html" class="service-card">
+            <a href="./services/impact.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-users icon"></i>
               <h3 data-i18n="impact_title">Impact communautaire</h3>
               <p data-i18n="impact_text">Création d’emplois, formation locale et partenariats avec ONG, startups et universités.</p>
             </a>
             
-            <a href="services/vente_terrain.html" class="service-card">
+            <a href="./services/vente_terrain.html" class="service-card"> <!-- Chemin relatif -->
               <i class="fas fa-map-marked-alt icon"></i>
               <h3 data-i18n="vente_terrain_title">Vente de terrains</h3>
               <p data-i18n="vente_terrain_text">Commercialisation de parcelles stratégiques dans une cité urbaine en développement.</p>
@@ -71,7 +71,7 @@
 
     <script>
         // Chargement du header
-        fetch('header.html')
+        fetch('header.html') <!-- Chemin relatif -->
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
@@ -79,7 +79,7 @@
             .catch(error => console.error('Erreur lors du chargement du header:', error));
     
         // Chargement du footer
-        fetch('footer.html')
+        fetch('footer.html') 
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-container').innerHTML = data;
