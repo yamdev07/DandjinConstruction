@@ -1,93 +1,380 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Vitrine - Dandjin</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dandjin-blue': '#457cb4',
+                        'dandjin-yellow': '#ffcc00',
+                        'dandjin-dark': '#2e5b88'
+                    },
+                    fontFamily: {
+                        'ubuntu': ['Ubuntu', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.construction21.org/france/data/sources/users/6711/image-batiment-2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
 
-    <!-- Chargement dynamique du header -->
-    <div id="header-container"></div>
-    
-    <!-- Bannière principale -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 id="texte-serpent" class="serpent-container" data-i18n="welcome">Bienvenue chez DANDJIN</h1>
-            <p data-i18n="tagline">Experts en construction, dragage et travaux maritimes</p>
-            <a href="#services" class="btn" data-i18n="discoverServices">Découvrir nos services</a>
+        /* Animation serpent uniquement */
+        .serpent-container {
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .lettre {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: snakeDrop 0.5s forwards;
+        }
+
+        @keyframes snakeDrop {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-ubuntu bg-gray-50">
+
+    <!-- Header -->
+    <nav class="bg-dandjin-blue shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/Entreprise_tonton_logo.png" alt="Logo Dandjin"
+                            class="h-12 w-12 rounded-full mr-3">
+                        <span class="text-white font-bold text-lg hidden sm:block">Dandjin</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Accueil</a>
+                        <a href="aPropos.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">À
+                            propos</a>
+                        <a href="service.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Services</a>
+                        <a href="contact.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Search & Language -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden lg:block">
+                        <input type="text" id="searchInput" placeholder="Rechercher..."
+                            class="bg-white rounded-lg px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+                        <button onclick="performSearch()"
+                            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-dandjin-blue">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <select id="language-select"
+                        class="bg-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-dandjin-yellow">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-dandjin-blue">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="text-white block px-3 py-2 rounded-md font-medium">Accueil</a>
+                <a href="aPropos.html" class="text-white block px-3 py-2 rounded-md font-medium">À propos</a>
+                <a href="service.html" class="text-white block px-3 py-2 rounded-md font-medium">Services</a>
+                <a href="contact.html" class="text-white block px-3 py-2 rounded-md font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg min-h-screen flex items-center justify-center text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 id="texte-serpent" class="text-4xl md:text-6xl font-bold mb-6 serpent-container"></h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                Experts en construction, dragage et travaux maritimes
+            </p>
+            <a href="#services"
+                class="inline-block bg-dandjin-yellow text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors transform hover:scale-105">
+                Découvrir nos services
+            </a>
         </div>
     </header>
-    
-    <!-- Section Services -->
-    <section id="services">
-        <h2 class="services-titles" data-i18n="services">Nos Services</h2>
-        <div class="services-container">
-            <div class="service">
-                <a href="services/dragage.html">
-                    <img src="images/jan-huber-kO8f82u73Es-unsplash.jpg" alt="Dragage">
-                </a>
-                <h3>Dragage</h3>
-                <p data-i18n="dragageText">Travaux de curage, nettoyage de ports, fleuves et lacs.</p>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-dandjin-dark mb-4">Nos Services</h2>
+                <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
             </div>
-            <div class="service">
-                <a href="services/construction.html">
-                    <img src="images/thomas-kinto-DYx-Da77wDg-unsplash.jpg" alt="Construction">
-                </a>
-                <h3>Construction</h3>
-                <p data-i18n="constructionText">Ouvrages solides : routes, berges, quais maritimes, etc.</p>
-            </div>
-            <div class="service">
-                <a href="services/transport-maritime.html">
-                    <img src="images/jad20220831-eco-benin-eiffage-portcotonou-photo3-1256x628-1661949377 (1).webp" alt="Transport Maritime">
-                </a>
-                <h3>Transport Maritime</h3>
-                <p data-i18n="transportText">Services de logistique portuaire, affrètement, et transport de marchandises par voie navigable.</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="group bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="images/jan-huber-kO8f82u73Es-unsplash.jpg" alt="Dragage"
+                            class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-dandjin-blue mb-3">Dragage</h3>
+                        <p class="text-gray-600 leading-relaxed">Travaux de curage, nettoyage de ports, fleuves et lacs
+                            avec des équipements modernes et respectueux de l'environnement.</p>
+                        <a href="services/dragage.html"
+                            class="inline-block mt-4 text-dandjin-blue font-semibold hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div
+                    class="group bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="images/thomas-kinto-DYx-Da77wDg-unsplash.jpg" alt="Construction"
+                            class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-dandjin-blue mb-3">Construction</h3>
+                        <p class="text-gray-600 leading-relaxed">Ouvrages solides et durables : routes, berges, quais
+                            maritimes et infrastructures modernes.</p>
+                        <a href="services/construction.html"
+                            class="inline-block mt-4 text-dandjin-blue font-semibold hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div
+                    class="group bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="images/jad20220831-eco-benin-eiffage-portcotonou-photo3-1256x628-1661949377 (1).webp"
+                            alt="Transport Maritime" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-dandjin-blue mb-3">Transport Maritime</h3>
+                        <p class="text-gray-600 leading-relaxed">Services de logistique portuaire, affrètement, et
+                            transport de marchandises par voie navigable.</p>
+                        <a href="services/transport-maritime.html"
+                            class="inline-block mt-4 text-dandjin-blue font-semibold hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section À propos de Dandjin -->
-    <section id="about" style="padding: 80px 20px; background-color: #f5f5f5;">
-        <h2 class="services-titles" style="text-align: center; margin-bottom: 40px;" data-i18n="about">À propos de Dandjin</h2>
-        <div class="about-container">
-            <img src="images/equipe.jpg" alt="Notre équipe sur le terrain">
-            <div>
-                <p data-i18n="about1">
-                    DANDJIN DREDGING DEPTH & CONSTRUCTION LTD est une entreprise innovante spécialisée dans le dragage, la vente de sable...
-                </p>
-                <p data-i18n="about2">
-                    Nos opérations sont guidées par l'excellence, la durabilité et l'innovation.
-                </p>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-dandjin-dark mb-4">À propos de Dandjin</h2>
+                <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Témoignages clients -->
-    <section id="testimonials" style="padding: 80px 20px; background-color: white;">
-        <h2 class="services-titles" style="text-align: center; margin-bottom: 50px;" data-i18n="trustedBy">Ils nous font confiance</h2>
-        <div class="testimonials-container">
-            <div class="testimonial">
-                <p data-i18n="testimonial1">"Travail impeccable pour notre projet de port..."</p>
-                <p><strong>— Société Maritime de Cotonou</strong></p>
-            </div>
-            <div class="testimonial">
-                <p data-i18n="testimonial2">"Sable de qualité supérieure livré rapidement..."</p>
-                <p><strong>— Bâtisseur Africa SA</strong></p>
-            </div>
-            <div class="testimonial">
-                <p data-i18n="testimonial3">"Dandjin nous accompagne depuis plusieurs années..."</p>
-                <p><strong>— Constructeurs de l'Ouest</strong></p>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <img src="images/equipe.jpg" alt="Notre équipe sur le terrain"
+                        class="w-full rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        <strong class="text-dandjin-blue">DANDJIN DREDGING DEPTH & CONSTRUCTION LTD</strong> est une
+                        entreprise innovante spécialisée dans le dragage, la vente de sable et la construction
+                        d'infrastructures durables.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Nos opérations sont guidées par l'excellence, la durabilité et l'innovation. Nous nous engageons
+                        à transformer le territoire de manière éco-responsable.
+                    </p>
+                    <a href="aPropos.html"
+                        class="inline-block bg-dandjin-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-dandjin-dark transition-colors">
+                        En savoir plus
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Chargement dynamique du footer -->
-    <div id="footer-container"></div>
-  
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-dandjin-dark mb-4">Ils nous font confiance</h2>
+                <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="text-dandjin-yellow text-4xl mb-4">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-6 italic">
+                        "Travail impeccable pour notre projet de port. L'équipe Dandjin a su répondre à nos exigences
+                        avec professionnalisme."
+                    </p>
+                    <div class="border-t pt-4">
+                        <p class="font-bold text-dandjin-blue">— Société Maritime de Cotonou</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="text-dandjin-yellow text-4xl mb-4">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-6 italic">
+                        "Sable de qualité supérieure livré rapidement. Un partenaire fiable pour nos projets de
+                        construction."
+                    </p>
+                    <div class="border-t pt-4">
+                        <p class="font-bold text-dandjin-blue">— Bâtisseur Africa SA</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="text-dandjin-yellow text-4xl mb-4">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-6 italic">
+                        "Dandjin nous accompagne depuis plusieurs années avec des solutions innovantes et durables."
+                    </p>
+                    <div class="border-t pt-4">
+                        <p class="font-bold text-dandjin-blue">— Constructeurs de l'Ouest</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-dandjin-blue text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Contact</h2>
+                <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Informations de contact</h3>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-building text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Entreprise:</p>
+                            <p class="text-gray-200">Dandjin Dredging Depth & Construction Ltd</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-user text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Directeur:</p>
+                            <p class="text-gray-200">Jules Kossi Ashiagbor</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Adresse:</p>
+                            <p class="text-gray-200">P. O. BOX 228, Keta, Ghana, West Africa</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="font-semibold flex items-center">
+                            <i class="fas fa-phone-alt text-dandjin-yellow mr-3"></i>Téléphones:
+                        </p>
+                        <div class="ml-6 space-y-1">
+                            <p class="text-gray-200">+233 55 4951016</p>
+                            <p class="text-gray-200">+233 20 4090609</p>
+                            <p class="text-gray-200">+229 97 634464</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Suivez-nous</h3>
+                    <div class="space-y-4">
+                        <a href="mailto:juleskossaiasiagbor24@gmail.com"
+                            class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b" target="_blank"
+                            class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://x.com/DandjinL?t=8TvzrsBGRHapQePcPJ1QKg&s=08" target="_blank"
+                            class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Notre localisation</h3>
+                    <div class="rounded-lg overflow-hidden shadow-lg">
+                        <iframe src="https://www.google.com/maps?q=Keta,+Ghana&output=embed" width="100%" height="250"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" class="w-full">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-400 mt-12 pt-8 text-center text-gray-200">
+                <p>&copy; 2024 Dandjin Dredging Depth & Construction Ltd. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search function
         function performSearch() {
             const input = document.getElementById("searchInput").value.toLowerCase();
             if (!input) {
@@ -105,91 +392,102 @@
                 alert("Aucun résultat trouvé pour : " + input);
             }
         }
-    </script>
-    
-    <script>
-        // Chargement du header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            })
-            .catch(error => console.error('Erreur lors du chargement du header:', error));
 
-        // Chargement du footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Erreur lors du chargement du footer:', error));
-    </script>
+        // Animation serpent qui ne coupe pas les mots
+        const textePrincipal = "Bienvenue chez DANDJIN DREDGING CONSTRUCTION";
+        const container = document.getElementById("texte-serpent");
+        let animationTimeout;
 
-<script src="lang.js"></script>
-
-<script>
-    const texte = "Bienvenue chez DANDJIN DREDGING CONSTRUCTION";
-    const container = document.getElementById("texte-serpent");
-
-    function animationTexte() {
-        container.innerHTML = "";
-        texte.split("").forEach((char, index) => {
-            const span = document.createElement("span");
-            span.textContent = char === " " ? "\u00A0" : char;
-            span.classList.add("lettre");
-            span.style.animationDelay = `${index * 0.1}s`;
-            container.appendChild(span);
-        });
-        setTimeout(animationTexte, 5000 + texte.length * 100);
-    }
-
-    animationTexte();
-
-    const selectedLang = localStorage.getItem("lang") || "fr";
-
-    // Charger le header, puis appliquer la langue et ajouter l'écouteur
-    fetch('header.html')
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById('header-container').innerHTML = data;
-            const select = document.getElementById("language-select");
-            if (select) {
-                select.value = selectedLang;
-                select.addEventListener("change", function () {
-                    localStorage.setItem("lang", this.value);
-                    setLanguage(this.value);
-                });
+        function animerTexteSerpent() {
+            // Annuler l'animation précédente si elle existe
+            if (animationTimeout) {
+                clearTimeout(animationTimeout);
             }
-            setLanguage(selectedLang);
+
+            container.innerHTML = "";
+
+            // Séparer le texte en mots et espaces
+            const elements = textePrincipal.split(/(\s+)/);
+            let delay = 0;
+
+            elements.forEach(element => {
+                if (element.trim() === "" && element !== "") {
+                    // Cas des espaces multiples
+                    const spaceSpan = document.createElement("span");
+                    spaceSpan.innerHTML = "&nbsp;".repeat(element.length);
+                    container.appendChild(spaceSpan);
+                } else if (element === " ") {
+                    // Espace simple
+                    const spaceSpan = document.createElement("span");
+                    spaceSpan.innerHTML = "&nbsp;";
+                    container.appendChild(spaceSpan);
+                } else if (element !== "") {
+                    // Mot complet
+                    const motContainer = document.createElement("span");
+                    motContainer.style.display = "inline-block";
+                    motContainer.style.whiteSpace = "nowrap";
+
+                    // Animer chaque lettre du mot
+                    element.split("").forEach((char, charIndex) => {
+                        const span = document.createElement("span");
+                        span.textContent = char;
+                        span.classList.add("lettre");
+                        span.style.animationDelay = `${delay}s`;
+                        motContainer.appendChild(span);
+                        delay += 0.05; // Délai entre les lettres
+                    });
+
+                    container.appendChild(motContainer);
+                }
+
+                // Petit délai supplémentaire après chaque mot/espace
+                delay += 0.02;
+            });
+
+            // Calculer la durée totale de l'animation en ms
+            const dureeTotale = delay * 1000;
+
+            // Répéter l'animation après la fin + 5 secondes
+            animationTimeout = setTimeout(animerTexteSerpent, dureeTotale + 5000);
+        }
+
+        // Démarrer l'animation
+        animerTexteSerpent();
+
+        // Nettoyer lors du déchargement de la page
+        window.addEventListener('beforeunload', () => {
+            if (animationTimeout) {
+                clearTimeout(animationTimeout);
+            }
         });
 
-    // Charger le footer, puis appliquer la langue
-    fetch('footer.html')
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById('footer-container').innerHTML = data;
-            setLanguage(selectedLang);
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
 
-    // Recherche intelligente
-    function performSearch() {
-        const input = document.getElementById("searchInput").value.toLowerCase();
-        if (!input) {
-            alert("Veuillez entrer un mot pour lancer la recherche.");
-            return;
-        }
-        if (input.includes("service") || input.includes("dragage") || input.includes("construction")) {
-            document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
-        } else if (input.includes("contact")) {
-            document.getElementById("contact").scrollIntoView({ behavior: 'smooth' });
-        } else if (input.includes("accueil")) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            alert("Aucun résultat trouvé pour : " + input);
-        }
-    }
-</script>
+        // Language selector functionality
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', function () {
+            // Store language preference
+            localStorage.setItem('lang', this.value);
+            // Here you would typically reload or update content based on language
+            console.log('Language changed to:', this.value);
+        });
 
-    
+        // Load saved language preference
+        const savedLang = localStorage.getItem('lang') || 'fr';
+        languageSelect.value = savedLang;
+    </script>
 </body>
+
 </html>

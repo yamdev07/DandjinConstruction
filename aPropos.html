@@ -3,110 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="about_title">À propos - Dandjin</title>
-    <link rel="stylesheet" href="style.css">
+    <title>À propos - Dandjin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dandjin-blue': '#457cb4',
+                        'dandjin-yellow': '#ffcc00',
+                        'dandjin-dark': '#2e5b88'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="font-ubuntu bg-gray-50">
 
-    <!-- Conteneur d'en-tête -->
-    <div id="header-container"></div>
+    <!-- Header -->
+    <nav class="bg-dandjin-blue shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/Entreprise_tonton_logo.png" alt="Logo Dandjin" class="h-12 w-12 rounded-full mr-3">
+                        <span class="text-white font-bold text-lg hidden sm:block">Dandjin</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Accueil</a>
+                        <a href="aPropos.html" class="text-dandjin-yellow px-3 py-2 rounded-md font-medium">À propos</a>
+                        <a href="service.html" class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Services</a>
+                        <a href="contact.html" class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
 
-    <section class="about-section">
-        <div class="container">
-            <h1 data-i18n="about_heading">À propos de Dandjin</h1>
+                <div class="flex items-center space-x-4">
+                    <select class="bg-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-dandjin-yellow">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-dandjin-blue to-dandjin-dark text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">À propos de Dandjin</h1>
+            <p class="text-xl md:text-2xl opacity-90">Innovation, Excellence et Durabilité</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="about-content">
-                <img src="images/durian-bullet-gvsc7_UQVOk-unsplash.jpg" alt="Image de Dandjin" class="about-img">
-    
-                <p data-i18n="about_intro1"><strong>DANDJIN DEPTH DREDGING AND CONSTRUCTION LTD</strong> est une entreprise innovante, implantée à Keta (Ghana), spécialisée dans le dragage de sable, la construction d’infrastructures et le développement urbain durable. Créée pour répondre à la demande croissante en matériaux de construction tout en respectant les normes environnementales, Dandjin se positionne comme un acteur engagé dans la transformation éco-responsable du territoire.</p>
-    
-                <p data-i18n="about_intro2">Notre principal projet se situe dans la lagune de Kedzikope, une zone stratégique riche en sable de haute qualité. Nous menons des opérations de dragage modernes et responsables, tout en planifiant la création d’un pôle urbain multifonctionnel alliant espaces résidentiels, centres commerciaux et zones de loisirs. Ce projet vise à faire de Keta une destination de développement économique et social majeure dans la région.</p>
-    
-                <h2 data-i18n="mission_title">Notre mission</h2>
-                <p data-i18n="mission_text">Nous nous engageons à offrir des services de dragage et de construction de haute qualité, respectueux de l’environnement, adaptés aux besoins des communautés locales et conformes aux exigences réglementaires. Nos interventions visent à valoriser les ressources naturelles de manière durable tout en générant de l’emploi et en soutenant les initiatives de développement communautaire.</p>
-    
-                <h2 data-i18n="vision_title">Notre vision</h2>
-                <p data-i18n="vision_text">Devenir une référence mondiale dans le domaine du dragage écologique et des constructions durables. Nous plaçons l’innovation, la technologie et la responsabilité sociale au cœur de notre stratégie pour construire des infrastructures utiles, modernes et harmonieuses avec leur environnement.</p>
-    
-                <h2 data-i18n="offers_title">Nos offres</h2>
-                <p data-i18n="offers_text">
-                    Discover our recruitment opportunities and become a partner. For more details, click here:
-                    <a href="https://sites.google.com/view/dandjindredgingdepthco/recrutements-partenaires" target="_blank" class="styled-link" data-i18n="offers_link">
-                      recrutements-partenaires
-                    </a>.
-                  </p>
-    
-                <h2 data-i18n="commitments_title">Nos engagements</h2>
-                <ul>
-                    <li data-i18n="commit_quality"><strong>Qualité :</strong> une exigence permanente pour garantir la satisfaction de nos clients et partenaires.</li>
-                    <li data-i18n="commit_durability"><strong>Durabilité :</strong> des méthodes de dragage et de construction respectueuses des écosystèmes.</li>
-                    <li data-i18n="commit_local"><strong>Développement local :</strong> création d’emplois, valorisation des talents locaux et amélioration des conditions de vie.</li>
-                    <li data-i18n="commit_innovation"><strong>Innovation :</strong> adoption de technologies modernes pour optimiser l’efficacité et la sécurité de nos opérations.</li>
-                    <li data-i18n="commit_transparency"><strong>Transparence :</strong> une gestion éthique, claire et rigoureuse dans tous nos projets.</li>
-                </ul>
-    
-                <h2 data-i18n="future_title">Un projet porteur d’avenir</h2>
-                <p data-i18n="future_text1">Au-delà du dragage, Dandjin ambitionne de faire émerger à Keta une cité intelligente. Le remblaiement du site permettra la création d’un centre résidentiel, commercial et de divertissement de classe mondiale. Grâce à des infrastructures modernes, des espaces verts, et une intégration technologique intelligente, nous contribuons à bâtir une nouvelle vision de l’aménagement du territoire.</p>
-    
-                <p data-i18n="future_text2">Nous collaborons avec des universités, des startups technologiques et des ONG locales pour intégrer les meilleures pratiques et les dernières innovations. Notre approche est holistique, mêlant ingénierie, urbanisme, et impact social positif.</p>
-    
-                <p class="basApropos" data-i18n="closing_text">Bienvenue chez Dandjin — là où l’innovation rencontre l’action durable.</p>
-    
-                <div class="share">
-                    <span data-i18n="share">Partager :</span>
-                    <a href="https://www.facebook.com/share/15n318dXD3/" target="_blank" class="social-link">
-                        <i class="fab fa-facebook-f social-icon"></i>
+            <!-- Introduction -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="order-2 lg:order-1">
+                    <img src="images/durian-bullet-gvsc7_UQVOk-unsplash.jpg" alt="Image de Dandjin" 
+                         class="w-full rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        <span class="font-bold text-dandjin-blue text-xl">DANDJIN DEPTH DREDGING AND CONSTRUCTION LTD</span> 
+                        est une entreprise innovante, implantée à Keta (Ghana), spécialisée dans le dragage de sable, 
+                        la construction d'infrastructures et le développement urbain durable.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Notre principal projet se situe dans la lagune de Kedzikope, une zone stratégique riche en sable 
+                        de haute qualité. Nous menons des opérations de dragage modernes et responsables.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mission, Vision, Values -->
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                <!-- Mission -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-dandjin-blue">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-dandjin-blue text-white p-3 rounded-full mr-4">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-dandjin-dark">Notre Mission</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Nous nous engageons à offrir des services de dragage et de construction de haute qualité, 
+                        respectueux de l'environnement, adaptés aux besoins des communautés locales et conformes 
+                        aux exigences réglementaires.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-dandjin-yellow">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-dandjin-yellow text-black p-3 rounded-full mr-4">
+                            <i class="fas fa-eye text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-dandjin-dark">Notre Vision</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Devenir une référence mondiale dans le domaine du dragage écologique et des constructions 
+                        durables. Nous plaçons l'innovation, la technologie et la responsabilité sociale au cœur 
+                        de notre stratégie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Offers Section -->
+            <div class="bg-gradient-to-r from-dandjin-blue to-dandjin-dark rounded-2xl p-8 text-white mb-20">
+                <h2 class="text-3xl font-bold mb-6 text-center">Nos Offres</h2>
+                <p class="text-center text-lg mb-6">
+                    Découvrez nos opportunités de recrutement et devenez partenaire.
+                </p>
+                <div class="text-center">
+                    <a href="https://sites.google.com/view/dandjindredgingdepthco/recrutements-partenaires" 
+                       target="_blank" 
+                       class="inline-block bg-dandjin-yellow text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors transform hover:scale-105">
+                        <i class="fas fa-external-link-alt mr-2"></i>Recrutements & Partenaires
                     </a>
-                    <a href="https://x.com/DandjinL?t=8TvzrsBGRHapQePcPJ1QKg&s=08" target="_blank" class="social-link">
-                        <i class="fab fa-twitter social-icon"></i>
+                </div>
+            </div>
+
+            <!-- Commitments -->
+            <div class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-dandjin-dark mb-4">Nos Engagements</h2>
+                    <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-dandjin-blue text-3xl mb-4">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Qualité</h3>
+                        <p class="text-gray-600">Une exigence permanente pour garantir la satisfaction de nos clients et partenaires.</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-green-500 text-3xl mb-4">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Durabilité</h3>
+                        <p class="text-gray-600">Des méthodes de dragage et de construction respectueuses des écosystèmes.</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-purple-500 text-3xl mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Développement Local</h3>
+                        <p class="text-gray-600">Création d'emplois, valorisation des talents locaux et amélioration des conditions de vie.</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-blue-500 text-3xl mb-4">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Innovation</h3>
+                        <p class="text-gray-600">Adoption de technologies modernes pour optimiser l'efficacité et la sécurité.</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="text-yellow-500 text-3xl mb-4">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Transparence</h3>
+                        <p class="text-gray-600">Une gestion éthique, claire et rigoureuse dans tous nos projets.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Project -->
+            <div class="bg-gray-100 rounded-2xl p-8 mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-dandjin-dark mb-4">Un Projet Porteur d'Avenir</h2>
+                    <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
+                </div>
+                
+                <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                    <p>
+                        Au-delà du dragage, Dandjin ambitionne de faire émerger à Keta une cité intelligente. 
+                        Le remblaiement du site permettra la création d'un centre résidentiel, commercial et 
+                        de divertissement de classe mondiale.
+                    </p>
+                    <p>
+                        Nous collaborons avec des universités, des startups technologiques et des ONG locales 
+                        pour intégrer les meilleures pratiques et les dernières innovations. Notre approche est 
+                        holistique, mêlant ingénierie, urbanisme, et impact social positif.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mb-12">
+                <p class="text-2xl font-bold text-dandjin-dark mb-8">
+                    Bienvenue chez Dandjin — là où l'innovation rencontre l'action durable.
+                </p>
+                
+                <!-- Social Media -->
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.facebook.com/share/15n318dXD3/" target="_blank" 
+                       class="bg-blue-600 text-white p-4 rounded-full hover:bg-blue-700 transition-colors transform hover:scale-110">
+                        <i class="fab fa-facebook-f text-xl"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin-in social-icon"></i>
+                    <a href="https://x.com/DandjinL?t=8TvzrsBGRHapQePcPJ1QKg&s=08" target="_blank" 
+                       class="bg-blue-400 text-white p-4 rounded-full hover:bg-blue-500 transition-colors transform hover:scale-110">
+                        <i class="fab fa-twitter text-xl"></i>
                     </a>
-                    <a href="https://www.instagram.com/Dandjin" target="_blank" class="social-link">
-                        <i class="fab fa-instagram social-icon"></i>
+                    <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b" target="_blank" 
+                       class="bg-blue-700 text-white p-4 rounded-full hover:bg-blue-800 transition-colors transform hover:scale-110">
+                        <i class="fab fa-linkedin-in text-xl"></i>
                     </a>
-                    <a href="https://youtube.com/@dandjinl?si=CAr85zM6BESdo14t" target="_blank" class="social-link">
-                        <i class="fab fa-youtube social-icon"></i>
+                    <a href="https://www.instagram.com/Dandjin" target="_blank" 
+                       class="bg-pink-600 text-white p-4 rounded-full hover:bg-pink-700 transition-colors transform hover:scale-110">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://youtube.com/@dandjinl?si=CAr85zM6BESdo14t" target="_blank" 
+                       class="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition-colors transform hover:scale-110">
+                        <i class="fab fa-youtube text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Conteneur de pied de page -->
-    <div id="footer-container"></div>
 
-    <script src="lang.js"></script>
+    <!-- Footer -->
+    <footer class="bg-dandjin-blue text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Contact</h2>
+                <div class="w-24 h-1 bg-dandjin-yellow mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Informations de contact</h3>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-building text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Entreprise:</p>
+                            <p class="text-gray-200">Dandjin Dredging Depth & Construction Ltd</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-user text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Directeur:</p>
+                            <p class="text-gray-200">Jules Kossi Ashiagbor</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Adresse:</p>
+                            <p class="text-gray-200">P. O. BOX 228, Keta, Ghana, West Africa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Suivez-nous</h3>
+                    <div class="space-y-4">
+                        <a href="mailto:juleskossaiasiagbor24@gmail.com" 
+                           class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dandjin-dredging-company-5215a334b" target="_blank"
+                           class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://x.com/DandjinL?t=8TvzrsBGRHapQePcPJ1QKg&s=08" target="_blank"
+                           class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Notre localisation</h3>
+                    <div class="rounded-lg overflow-hidden shadow-lg">
+                        <iframe 
+                            src="https://www.google.com/maps?q=Keta,+Ghana&output=embed"
+                            width="100%" 
+                            height="250" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="w-full">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-400 mt-12 pt-8 text-center text-gray-200">
+                <p>&copy; 2024 Dandjin Dredging Depth & Construction Ltd. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        const selectedLang = localStorage.getItem("lang") || "fr";
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
 
-        // Charger le header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-
-                const select = document.getElementById("language-select");
-                if (select) {
-                    select.value = selectedLang;
-                    select.addEventListener("change", function () {
-                        localStorage.setItem("lang", this.value);
-                        setLanguage(this.value);
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
-
-                setLanguage(selectedLang);
             });
+        });
 
-        // Charger le footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-                setLanguage(selectedLang);
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section > div').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
