@@ -4,52 +4,505 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Construction - Dandjin</title>
-  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dandjin-blue': '#457cb4',
+            'dandjin-yellow': '#ffcc00',
+            'dandjin-dark': '#2e5b88'
+          },
+          fontFamily: {
+            'ubuntu': ['Ubuntu', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .construction-bg {
+      background-image: linear-gradient(135deg, rgba(69, 124, 180, 0.95), rgba(46, 91, 136, 0.95)), url('https://www.construction21.org/france/data/sources/users/6711/image-batiment-2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* Animation d'apparition */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Particules animées */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 204, 0, 0.1);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .shape:nth-child(1) { width: 20px; height: 20px; left: 10%; animation-delay: 0s; }
+    .shape:nth-child(2) { width: 15px; height: 15px; left: 25%; animation-delay: 2s; }
+    .shape:nth-child(3) { width: 25px; height: 25px; left: 40%; animation-delay: 4s; }
+    .shape:nth-child(4) { width: 18px; height: 18px; left: 65%; animation-delay: 1s; }
+    .shape:nth-child(5) { width: 22px; height: 22px; left: 80%; animation-delay: 3s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%, 90% { opacity: 1; }
+      50% { transform: translateY(-20vh) scale(1); }
+    }
+
+    .content-block {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-text {
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight-text::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: rgba(255, 204, 0, 0.3);
+      z-index: -1;
+      transition: height 0.3s ease;
+    }
+
+    .highlight-text:hover::after {
+      height: 14px;
+    }
+
+    .construction-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s ease;
+    }
+
+    .construction-img:hover {
+      transform: scale(1.02);
+    }
+
+    .construction-img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(69, 124, 180, 0.1), rgba(46, 91, 136, 0.3));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .construction-img:hover::after {
+      opacity: 1;
+    }
+
+    .btn {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .project-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
-<body>
-  <div id="header-container"></div>
+<body class="font-ubuntu bg-gray-50">
 
-  <main class="container construction-content">
-    <h1>Nos Projets de Construction</h1>
-    <p>
-      Chez <strong>Dandjin Dredging Depth & Construction Ltd</strong>, la construction est bien plus qu’un métier — c’est une responsabilité envers les générations futures. Nous réalisons des projets d'infrastructure de haute qualité sur l’ensemble du territoire béninois : routes, quais, digues, berges, bâtiments publics et privés.
-    </p>
-
-    <p>
-      Notre équipe d’ingénieurs, de techniciens et de chefs de chantier œuvre dans le respect strict des normes techniques et environnementales. Chaque projet est conçu pour durer, en tenant compte des réalités locales, des conditions climatiques et des besoins des populations.
-    </p>
-
-    <img class="construction-img" src="../images/463800478317001701896712.jpg" alt="Projet de construction au Bénin">
-
-    <p>
-      Nous avons par exemple contribué au <strong>Projet Asphaltage</strong>, un chantier de plus de 600 km de voiries urbaines dans neuf grandes villes du Bénin. Nous avons aussi participé à la <strong>construction de logements sociaux</strong> dans le cadre d’un programme ambitieux de l’État, avec des logements durables, accessibles et bien intégrés aux réseaux urbains.
-    </p>
-
-    <img class="construction-img" src="../images/chantier-construction-benin.jpg" alt="Marché en construction au Bénin">
-
-    <p>
-      En zone portuaire, notre expertise est mise à profit pour renforcer les berges et construire des quais capables de résister aux mouvements fluviaux. Ces infrastructures sont essentielles pour le développement économique, notamment dans le secteur logistique et maritime.
-    </p>
-
-    <p>
-      Grâce à notre approche rigoureuse et nos équipements de pointe, nous garantissons à nos partenaires un respect strict des délais et des budgets. Notre mission est claire : bâtir le Bénin de demain avec sérieux, innovation et engagement.
-    </p>
-
-    <img class="construction-img" src="../images/Benin_construction.jpg" alt="Chantier de construction d'un marché au Bénin">
-  </main>
-
-  <div style="text-align: center; margin: 40px 0;">
-    <a href="../service.html" class="btn">← Voir tous les services</a>
+  <!-- Formes flottantes -->
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
   </div>
 
-  <div id="footer-container"></div>
+  <!-- Header -->
+  <nav class="bg-dandjin-blue shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="/index.html" class="flex items-center">
+            <img src="/images/Entreprise_tonton_logo.png" alt="Logo Dandjin"
+              class="h-12 w-12 rounded-full mr-3">
+            <span class="text-white font-bold text-lg hidden sm:block">Dandjin</span>
+          </a>
+        </div>
+
+        <!-- Navigation Desktop -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/index.html"
+              class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Accueil</a>
+            <a href="/aPropos.html"
+              class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">À
+              propos</a>
+            <a href="/service.html"
+              class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Services</a>
+            <a href="/contact.html"
+              class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
+          </div>
+        </div>
+
+        <!-- Search & Language -->
+        <div class="flex items-center space-x-4">
+          <div class="relative hidden lg:block">
+            <input type="text" id="searchInput" placeholder="Rechercher..."
+              class="bg-white rounded-lg px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+            <button onclick="performSearch()"
+              class="absolute right-2 top-1/2 transform -translate-y-1/2 text-dandjin-blue">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <select id="language-select"
+            class="bg-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-white hover:text-dandjin-yellow">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-dandjin-blue">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="/index.html" class="text-white block px-3 py-2 rounded-md font-medium">Accueil</a>
+        <a href="/aPropos.html" class="text-white block px-3 py-2 rounded-md font-medium">À propos</a>
+        <a href="/service.html" class="text-white block px-3 py-2 rounded-md font-medium">Services</a>
+        <a href="/contact.html" class="text-white block px-3 py-2 rounded-md font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="construction-bg py-32 text-white text-center relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">Nos Projets de Construction</h1>
+      <div class="w-32 h-1 bg-dandjin-yellow mx-auto mb-8 fade-in" style="transition-delay: 0.2s"></div>
+      <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto fade-in" style="transition-delay: 0.4s">
+        Bâtir le Bénin de demain avec sérieux, innovation et engagement
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="content-block p-8 md:p-12 mb-12 fade-in">
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Chez <strong class="highlight-text">Dandjin Dredging Depth & Construction Ltd</strong>, la construction est bien plus qu'un métier — c'est une responsabilité envers les générations futures. Nous réalisons des projets d'infrastructure de haute qualité sur l'ensemble du territoire béninois : routes, quais, digues, berges, bâtiments publics et privés.
+      </p>
+
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        Notre équipe d'ingénieurs, de techniciens et de chefs de chantier œuvre dans le respect strict des normes techniques et environnementales. Chaque projet est conçu pour durer, en tenant compte des réalités locales, des conditions climatiques et des besoins des populations.
+      </p>
+    </div>
+
+    <!-- Projet Asphaltage -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="fade-in">
+        <img src="/images/463800478317001701896712.jpg" alt="Projet de construction au Bénin" class="construction-img w-full h-auto">
+      </div>
+      <div class="content-block p-8 fade-in" style="transition-delay: 0.2s">
+        <h2 class="text-2xl font-bold text-dandjin-dark mb-4">Projet Asphaltage</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Nous avons contribué à un chantier de plus de <strong class="highlight-text">600 km de voiries urbaines</strong> dans neuf grandes villes du Bénin. Ce projet ambitieux a permis d'améliorer significativement la mobilité urbaine et les conditions de vie des populations.
+        </p>
+        <ul class="mt-4 space-y-2">
+          <li class="flex items-start">
+            <i class="fas fa-check text-dandjin-yellow mt-1 mr-2"></i>
+            <span>Réseau routier durable</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-dandjin-yellow mt-1 mr-2"></i>
+            <span>Matériaux de haute qualité</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-dandjin-yellow mt-1 mr-2"></i>
+            <span>Respect des délais et budgets</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Logements sociaux -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <div class="content-block p-8 fade-in order-1 md:order-2">
+        <h2 class="text-2xl font-bold text-dandjin-dark mb-4">Logements Sociaux</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Participation à la <strong class="highlight-text">construction de logements sociaux</strong> dans le cadre d'un programme ambitieux de l'État. Ces logements durables et accessibles sont parfaitement intégrés aux réseaux urbains.
+        </p>
+        <ul class="mt-4 space-y-2">
+          <li class="flex items-start">
+            <i class="fas fa-check text-dandjin-yellow mt-1 mr-2"></i>
+            <span>Confort et durabilité</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-dandjin-yellow mt-1 mr-2"></i>
+            <span>Accès aux services essentiels</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-dandjin-yellow mt-1 mr-2"></i>
+            <span>Intégration urbaine harmonieuse</span>
+          </li>
+        </ul>
+      </div>
+      <div class="fade-in order-2 md:order-1" style="transition-delay: 0.2s">
+        <img src="/images/chantier-construction-benin.jpg" alt="Marché en construction au Bénin" class="construction-img w-full h-auto">
+      </div>
+    </div>
+
+    <!-- Infrastructures portuaires -->
+    <div class="content-block p-8 md:p-12 mb-12 fade-in" style="transition-delay: 0.3s">
+      <h2 class="text-3xl font-bold text-dandjin-dark mb-6">Infrastructures Portuaires</h2>
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            En zone portuaire, notre expertise est mise à profit pour <strong class="highlight-text">renforcer les berges</strong> et construire des quais capables de résister aux mouvements fluviaux. Ces infrastructures sont essentielles pour le développement économique, notamment dans le secteur logistique et maritime.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Grâce à notre approche rigoureuse et nos équipements de pointe, nous garantissons à nos partenaires un respect strict des délais et des budgets. Notre mission est claire : bâtir le Bénin de demain avec sérieux, innovation et engagement.
+          </p>
+        </div>
+        <div>
+          <img src="/images/Benin_construction.jpg" alt="Chantier de construction d'un marché au Bénin" class="construction-img w-full h-auto">
+        </div>
+      </div>
+    </div>
+
+    <!-- Nos engagements -->
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="content-block p-6 project-card fade-in">
+        <div class="text-4xl text-dandjin-blue mb-4">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Qualité</h3>
+        <p class="text-gray-600">Matériaux certifiés et techniques de construction éprouvées pour des infrastructures durables.</p>
+      </div>
+      
+      <div class="content-block p-6 project-card fade-in" style="transition-delay: 0.2s">
+        <div class="text-4xl text-dandjin-blue mb-4">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Durabilité</h3>
+        <p class="text-gray-600">Approche éco-responsable et respect des normes environnementales les plus strictes.</p>
+      </div>
+      
+      <div class="content-block p-6 project-card fade-in" style="transition-delay: 0.4s">
+        <div class="text-4xl text-dandjin-blue mb-4">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dandjin-dark mb-3">Impact Social</h3>
+        <p class="text-gray-600">Projets qui améliorent concrètement le cadre de vie des populations locales.</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12 fade-in" style="transition-delay: 0.4s">
+      <a href="/index.html" class="btn bg-dandjin-blue text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-dandjin-dark transition-colors">
+        <i class="fas fa-arrow-left mr-2"></i> Retour à l'accueil
+      </a>
+      <a href="/service.html" class="btn bg-dandjin-yellow text-dandjin-dark px-8 py-3 rounded-lg font-semibold text-center hover:bg-yellow-400 transition-colors">
+        <i class="fas fa-list mr-2"></i> Voir tous les services
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dandjin-blue text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Contact Info -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold mb-6">Informations de contact</h3>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-building text-dandjin-yellow mt-1"></i>
+            <div>
+              <p class="font-semibold">Entreprise:</p>
+              <p class="text-gray-200">Dandjin Dredging Depth & Construction Ltd</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-user text-dandjin-yellow mt-1"></i>
+            <div>
+              <p class="font-semibold">Directeur:</p>
+              <p class="text-gray-200">Jules Kossi Ashiagbor</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-dandjin-yellow mt-1"></i>
+            <div>
+              <p class="font-semibold">Adresse:</p>
+              <p class="text-gray-200">P. O. BOX 228, Keta, Ghana, West Africa</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact rapide -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold mb-6">Contact rapide</h3>
+          <div class="space-y-2">
+            <p class="font-semibold flex items-center">
+              <i class="fas fa-phone-alt text-dandjin-yellow mr-3"></i>Téléphones:
+            </p>
+            <div class="ml-6 space-y-1">
+              <p class="text-gray-200">+233 55 4951016</p>
+              <p class="text-gray-200">+233 20 4090609</p>
+              <p class="text-gray-200">+229 97 634464</p>
+            </div>
+          </div>
+          <a href="mailto:juleskossaiasiagbor24@gmail.com"
+             class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+          </a>
+        </div>
+
+        <!-- Liens rapides -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-semibold mb-6">Liens rapides</h3>
+          <div class="space-y-2">
+            <a href="index.html" class="block text-gray-200 hover:text-dandjin-yellow transition-colors">Accueil</a>
+            <a href="aPropos.html" class="block text-gray-200 hover:text-dandjin-yellow transition-colors">À propos</a>
+            <a href="service.html" class="block text-dandjin-yellow">Services</a>
+            <a href="contact.html" class="block text-gray-200 hover:text-dandjin-yellow transition-colors">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-blue-400 mt-12 pt-8 text-center text-gray-200">
+        <p>&copy; 2024 Dandjin Dredging Depth & Construction Ltd. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    fetch('../header.html').then(res => res.text()).then(data => {
-      document.getElementById('header-container').innerHTML = data;
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
     });
-    fetch('../footer.html').then(res => res.text()).then(data => {
-      document.getElementById('footer-container').innerHTML = data;
+
+    // Search function
+    function performSearch() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      if (!input) {
+        alert("Veuillez entrer un mot pour lancer la recherche.");
+        return;
+      }
+
+      if (input.includes("service") || input.includes("construction") || input.includes("projet")) {
+        window.location.href = "service.html";
+      } else if (input.includes("contact")) {
+        window.location.href = "contact.html";
+      } else if (input.includes("accueil")) {
+        window.location.href = "index.html";
+      } else {
+        alert("Aucun résultat trouvé pour : " + input);
+      }
+    }
+
+    // Animation observer
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('appear');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Language selector functionality
+    const languageSelect = document.getElementById('language-select');
+    languageSelect.addEventListener('change', function () {
+      localStorage.setItem('lang', this.value);
+      console.log('Language changed to:', this.value);
+    });
+
+    // Load saved language preference
+    const savedLang = localStorage.getItem('lang') || 'fr';
+    languageSelect.value = savedLang;
+
+    // Parallax effect for floating shapes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const shapes = document.querySelectorAll('.shape');
+      
+      shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 0.05;
+        shape.style.transform = `translateY(${scrolled * speed}px)`;
+      });
     });
   </script>
 </body>

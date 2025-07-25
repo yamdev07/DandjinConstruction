@@ -3,91 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Vitrine - Dandjin</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Nos Services - Dandjin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dandjin-blue': '#457cb4',
+                        'dandjin-yellow': '#ffcc00',
+                        'dandjin-dark': '#2e5b88'
+                    },
+                    fontFamily: {
+                        'ubuntu': ['Ubuntu', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .services-bg {
+            background-image: linear-gradient(135deg, rgba(69, 124, 180, 0.95), rgba(46, 91, 136, 0.95)), url('https://www.construction21.org/france/data/sources/users/6711/image-batiment-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .service-card {
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 204, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(69, 124, 180, 0.3);
+        }
+
+        .service-card .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* Animation d'apparition */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+        .service-card:nth-child(7) { animation-delay: 0.7s; }
+        .service-card:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Particules animées */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) { width: 20px; height: 20px; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 15px; height: 15px; left: 25%; animation-delay: 2s; }
+        .shape:nth-child(3) { width: 25px; height: 25px; left: 40%; animation-delay: 4s; }
+        .shape:nth-child(4) { width: 18px; height: 18px; left: 65%; animation-delay: 1s; }
+        .shape:nth-child(5) { width: 22px; height: 22px; left: 80%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(-20vh) scale(1); }
+        }
+    </style>
 </head>
-<body>
-    <div id="header-container"></div>
+<body class="font-ubuntu bg-gray-50">
 
-    <section id="services" class="services-section">
-        <div class="container">
-          <h2 class="services-titles" data-i18n="services_title">Nos Services</h2>
-          <div class="services-grid">
-            
-            <a href="./services/dragage.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-water icon"></i>
-              <h3 data-i18n="dragage_title">Dragage de sable</h3>
-              <p data-i18n="dragage_text">Extraction responsable de sable lagunaire de haute qualité...</p>
-            </a>
-            
-            <a href="./services/vente-sable.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-cubes icon"></i>
-              <h3 data-i18n="vente_sable_title">Vente de sable</h3>
-              <p data-i18n="vente_sable_text">Distribution de sable fin purifié destiné à divers projets de construction et d'infrastructure.</p>
-            </a>
-            
-            <a href="./services/construction.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-hard-hat icon"></i>
-              <h3 data-i18n="construction_title">Construction</h3>
-              <p data-i18n="construction_text">Réalisation d'ouvrages solides : routes, quais, berges et infrastructures urbaines durables.</p>
-            </a>
-            
-            <a href="./services/amenagement.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-city icon"></i>
-              <h3 data-i18n="amenagement_title">Aménagement urbain</h3>
-              <p data-i18n="amenagement_text">Création de cités modernes sur zones remblayées avec logements, commerces et loisirs.</p>
-            </a>
-            
-            <a href="./services/transport-maritime.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-ship icon"></i>
-              <h3 data-i18n="transport_title">Transport maritime</h3>
-              <p data-i18n="transport_text">Développement de voies navigables pour le transport sécurisé de personnes et marchandises.</p>
-            </a>
-            
-            <a href="./services/Developpement.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-leaf icon"></i>
-              <h3 data-i18n="developpement_title">Développement durable</h3>
-              <p data-i18n="developpement_text">Protection de l’environnement, lutte contre l’érosion, gestion des ressources naturelles.</p>
-            </a>
-            
-            <a href="./services/impact.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-users icon"></i>
-              <h3 data-i18n="impact_title">Impact communautaire</h3>
-              <p data-i18n="impact_text">Création d’emplois, formation locale et partenariats avec ONG, startups et universités.</p>
-            </a>
-            
-            <a href="./services/vente_terrain.html" class="service-card"> <!-- Chemin relatif -->
-              <i class="fas fa-map-marked-alt icon"></i>
-              <h3 data-i18n="vente_terrain_title">Vente de terrains</h3>
-              <p data-i18n="vente_terrain_text">Commercialisation de parcelles stratégiques dans une cité urbaine en développement.</p>
-            </a>
+    <!-- Formes flottantes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-          </div>
+    <!-- Header -->
+    <nav class="bg-dandjin-blue shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/Entreprise_tonton_logo.png" alt="Logo Dandjin"
+                            class="h-12 w-12 rounded-full mr-3">
+                        <span class="text-white font-bold text-lg hidden sm:block">Dandjin</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Accueil</a>
+                        <a href="aPropos.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">À
+                            propos</a>
+                        <a href="service.html"
+                            class="text-dandjin-yellow px-3 py-2 rounded-md font-medium">Services</a>
+                        <a href="contact.html"
+                            class="text-white hover:text-dandjin-yellow px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Search & Language -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden lg:block">
+                        <input type="text" id="searchInput" placeholder="Rechercher..."
+                            class="bg-white rounded-lg px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+                        <button onclick="performSearch()"
+                            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-dandjin-blue">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <select id="language-select"
+                        class="bg-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-dandjin-yellow">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-dandjin-yellow">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-dandjin-blue">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="text-white block px-3 py-2 rounded-md font-medium">Accueil</a>
+                <a href="aPropos.html" class="text-white block px-3 py-2 rounded-md font-medium">À propos</a>
+                <a href="service.html" class="text-dandjin-yellow block px-3 py-2 rounded-md font-medium">Services</a>
+                <a href="contact.html" class="text-white block px-3 py-2 rounded-md font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section avec titre -->
+    <section class="services-bg py-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Nos Services</h1>
+            <div class="w-32 h-1 bg-dandjin-yellow mx-auto mb-6"></div>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                Découvrez notre gamme complète de services spécialisés dans le dragage, la construction et l'aménagement durable
+            </p>
         </div>
     </section>
 
-    <div id="footer-container"></div>
+    <!-- Section des services -->
+    <section id="services" class="py-20 bg-gray-50 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                
+                <a href="./services/dragage.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Dragage de sable</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Extraction responsable de sable lagunaire de haute qualité pour vos projets de construction et d'infrastructure.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/vente-sable.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Vente de sable</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Distribution de sable fin purifié destiné à divers projets de construction et d'infrastructure.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/construction.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Construction</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Réalisation d'ouvrages solides : routes, quais, berges et infrastructures urbaines durables.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/amenagement.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Aménagement urbain</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Création de cités modernes sur zones remblayées avec logements, commerces et loisirs.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/transport-maritime.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Transport maritime</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Développement de voies navigables pour le transport sécurisé de personnes et marchandises.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/Developpement.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Développement durable</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Protection de l'environnement, lutte contre l'érosion, gestion des ressources naturelles.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/impact.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Impact communautaire</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Création d'emplois, formation locale et partenariats avec ONG, startups et universités.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./services/vente_terrain.html" class="service-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl relative fade-in-up">
+                    <div class="p-8 text-center">
+                        <div class="icon text-6xl text-dandjin-blue mb-6">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-dandjin-dark mb-4">Vente de terrains</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Commercialisation de parcelles stratégiques dans une cité urbaine en développement.
+                        </p>
+                        <div class="inline-flex items-center text-dandjin-blue font-semibold group-hover:text-dandjin-yellow transition-colors">
+                            En savoir plus <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="py-20 bg-dandjin-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Prêt à démarrer votre projet ?
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis personnalisé.
+            </p>
+            <a href="contact.html" 
+               class="inline-block bg-dandjin-yellow text-dandjin-dark px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors transform hover:scale-105">
+                Nous contacter
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dandjin-blue text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Informations de contact</h3>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-building text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Entreprise:</p>
+                            <p class="text-gray-200">Dandjin Dredging Depth & Construction Ltd</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-user text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Directeur:</p>
+                            <p class="text-gray-200">Jules Kossi Ashiagbor</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt text-dandjin-yellow mt-1"></i>
+                        <div>
+                            <p class="font-semibold">Adresse:</p>
+                            <p class="text-gray-200">P. O. BOX 228, Keta, Ghana, West Africa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact rapide -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Contact rapide</h3>
+                    <div class="space-y-2">
+                        <p class="font-semibold flex items-center">
+                            <i class="fas fa-phone-alt text-dandjin-yellow mr-3"></i>Téléphones:
+                        </p>
+                        <div class="ml-6 space-y-1">
+                            <p class="text-gray-200">+233 55 4951016</p>
+                            <p class="text-gray-200">+233 20 4090609</p>
+                            <p class="text-gray-200">+229 97 634464</p>
+                        </div>
+                    </div>
+                    <a href="mailto:juleskossaiasiagbor24@gmail.com"
+                       class="flex items-center space-x-3 text-gray-200 hover:text-dandjin-yellow transition-colors">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+
+                <!-- Liens rapides -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold mb-6">Liens rapides</h3>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block text-gray-200 hover:text-dandjin-yellow transition-colors">Accueil</a>
+                        <a href="aPropos.html" class="block text-gray-200 hover:text-dandjin-yellow transition-colors">À propos</a>
+                        <a href="service.html" class="block text-dandjin-yellow">Services</a>
+                        <a href="contact.html" class="block text-gray-200 hover:text-dandjin-yellow transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-400 mt-12 pt-8 text-center text-gray-200">
+                <p>&copy; 2024 Dandjin Dredging Depth & Construction Ltd. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Chargement du header
-        fetch('header.html') <!-- Chemin relatif -->
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            })
-            .catch(error => console.error('Erreur lors du chargement du header:', error));
-    
-        // Chargement du footer
-        fetch('footer.html') 
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            })
-            .catch(error => console.error('Erreur lors du chargement du footer:', error));
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search function
+        function performSearch() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            if (!input) {
+                alert("Veuillez entrer un mot pour lancer la recherche.");
+                return;
+            }
+
+            if (input.includes("service") || input.includes("dragage") || input.includes("construction")) {
+                document.getElementById("services").scrollIntoView({ behavior: 'smooth' });
+            } else if (input.includes("contact")) {
+                window.location.href = "contact.html";
+            } else if (input.includes("accueil")) {
+                window.location.href = "index.html";
+            } else {
+                alert("Aucun résultat trouvé pour : " + input);
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Language selector functionality
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', function () {
+            localStorage.setItem('lang', this.value);
+            console.log('Language changed to:', this.value);
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('lang') || 'fr';
+        languageSelect.value = savedLang;
+
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.05;
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
     </script>
-    <script src="main.js"></script>
-    <script src="lang.js"></script>
 
 </body>
 </html>
