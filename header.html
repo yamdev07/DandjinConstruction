@@ -1,25 +1,308 @@
-<nav>
-  <div class="topbar-left">
-    <a href="/fichier_nav/index.html">
-      <img src="/images/Entreprise_tonton_logo.png" alt="Logo Dandjin" class="logo-img">
-    </a>
-  </div>
-  
+<nav class="dandjin-nav">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a href="/fichier_nav/index.html">
+        <img src="/images/Entreprise_tonton_logo.png" alt="Logo Dandjin" class="logo-img">
+        <span class="logo-text">Dandjin</span>
+      </a>
+    </div>
 
-  <div class="onglets">
-    <a href="/index.html" data-i18n="home">Accueil</a>
-    <a href="/aPropos.html" data-i18n="about">À propos</a>
-    <a href="/service.html" data-i18n="services">Services</a>
-    <a href="/contact.html" data-i18n="contact">Contactez-nous</a>
+    <!-- Menu principal -->
+    <div class="nav-menu">
+      <a href="/index.html" class="nav-link" data-i18n="home">Accueil</a>
+      <a href="/aPropos.html" class="nav-link" data-i18n="about">À propos</a>
+      <a href="/service.html" class="nav-link" data-i18n="services">Services</a>
+      <a href="/contact.html" class="nav-link" data-i18n="contact">Contactez-nous</a>
+    </div>
+
+    <!-- Outils -->
+    <div class="nav-tools">
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Rechercher..." data-i18n-placeholder="search">
+        <button class="search-btn" onclick="performSearch()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+      <select id="language-select" class="language-selector">
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+
+    <!-- Menu mobile -->
+    <button class="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Rechercher..." data-i18n-placeholder="search">
-    <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+  <!-- Menu mobile déroulant -->
+  <div class="mobile-menu">
+    <a href="/index.html" class="mobile-link" data-i18n="home">Accueil</a>
+    <a href="/aPropos.html" class="mobile-link" data-i18n="about">À propos</a>
+    <a href="/service.html" class="mobile-link" data-i18n="services">Services</a>
+    <a href="/contact.html" class="mobile-link" data-i18n="contact">Contactez-nous</a>
+    <div class="mobile-search">
+      <input type="text" placeholder="Rechercher..." data-i18n-placeholder="search">
+      <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+    </div>
   </div>
-
-  <select id="language-select">
-    <option value="fr">Français</option>
-    <option value="en">English</option>
-  </select>
 </nav>
+
+<style>
+  /* Variables de couleur */
+  :root {
+    --dandjin-blue: #457cb4;
+    --dandjin-yellow: #ffcc00;
+    --dandjin-dark: #2e5b88;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --bg-light: #f8f9fa;
+  }
+
+  /* Navigation principale */
+  .dandjin-nav {
+    background-color: var(--dandjin-blue);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem 2rem;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Logo */
+  .nav-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .logo-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .logo-text {
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  /* Menu principal */
+  .nav-menu {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--dandjin-yellow);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--dandjin-yellow);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Outils */
+  .nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    padding: 0.5rem 1rem;
+    padding-right: 2.5rem;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    width: 200px;
+    transition: width 0.3s ease;
+  }
+
+  .search-input:focus {
+    width: 250px;
+    box-shadow: 0 0 0 2px var(--dandjin-yellow);
+  }
+
+  .search-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--dandjin-blue);
+    cursor: pointer;
+  }
+
+  .language-selector {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+
+  /* Menu mobile */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: var(--dandjin-dark);
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .mobile-link {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.5rem 0;
+  }
+
+  .mobile-search {
+    display: flex;
+    margin-top: 1rem;
+  }
+
+  .mobile-search input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border-radius: 5px 0 0 5px;
+    border: none;
+  }
+
+  .mobile-search button {
+    padding: 0 1rem;
+    background-color: var(--dandjin-yellow);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .nav-menu, .nav-tools {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .dandjin-nav {
+      padding: 0.5rem 1rem;
+    }
+    
+    .logo-text {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Gestion du menu mobile
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    document.querySelector('.mobile-menu').classList.toggle('active');
+  });
+
+  // Internationalisation (exemple basique)
+  function updateLanguage(lang) {
+    const translations = {
+      fr: {
+        home: "Accueil",
+        about: "À propos",
+        services: "Services",
+        contact: "Contactez-nous",
+        search: "Rechercher..."
+      },
+      en: {
+        home: "Home",
+        about: "About",
+        services: "Services",
+        contact: "Contact us",
+        search: "Search..."
+      }
+    };
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.textContent = translations[lang][key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      el.placeholder = translations[lang][key];
+    });
+  }
+
+  // Gestion du sélecteur de langue
+  document.getElementById('language-select').addEventListener('change', function() {
+    const lang = this.value;
+    localStorage.setItem('preferredLanguage', lang);
+    updateLanguage(lang);
+  });
+
+  // Charger la langue préférée
+  const preferredLanguage = localStorage.getItem('preferredLanguage') || 'fr';
+  document.getElementById('language-select').value = preferredLanguage;
+  updateLanguage(preferredLanguage);
+
+  // Fonction de recherche
+  function performSearch() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    // Implémentez votre logique de recherche ici
+    console.log('Recherche:', query);
+    alert('Fonction de recherche: ' + query);
+  }
+</script>
